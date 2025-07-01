@@ -112,11 +112,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             textsData = data;
             if (runningTextElement && textsData.runningText) {
-                // เพิ่มช่องว่างเพิ่มเติมด้านท้ายข้อความที่วิ่ง เพื่อให้มีช่องว่างระหว่างรอบ
-                // การทำซ้ำข้อความพร้อมช่องว่างเยอะๆ จะช่วยให้ marquee ดูต่อเนื่องและมีระยะห่างที่ปลาย
                 const originalText = textsData.runningText;
-                const separator = "                                    "; // เพิ่มช่องว่างเยอะๆ
-                runningTextElement.textContent = originalText + separator + originalText + separator + originalText; // ทำซ้ำ 3 รอบ
+                // เพิ่มจำนวนช่องว่างใน separator ให้มากขึ้น
+                const separator = "                                                 "; // เพิ่มช่องว่างให้มากขึ้นไปอีก!
+                // ทำซ้ำข้อความ 4 รอบ เพื่อให้ข้อความยาวมากพอที่จะครอบคลุม padding-right
+                runningTextElement.textContent = originalText + separator + originalText + separator + originalText + separator + originalText;
             }
             if (footerTextElement && textsData.footerText) {
                 footerTextElement.textContent = textsData.footerText;
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const categoryElement = link.closest('.category');
             const categoryButton = categoryElement ? categoryElement.querySelector('.accordion-button') : null;
             // ลบ emoji และ trim ช่องว่าง
-            const categoryName = categoryButton ? categoryButton.innerText.replace(/[\u{1F000}-\u{1FFFF}\u{2000}-\u{2BFF}]/gu, '').replace(/\s+/g, ' ').trim() : 'Unknown Category';
+            const categoryName = categoryButton ? buttonElement.innerText.replace(/[\u{1F000}-\u{1FFFF}\u{2000}-\u{2BFF}]/gu, '').replace(/\s+/g, ' ').trim() : 'Unknown Category';
             
             if (typeof gtag === 'function') {
                 gtag('event', 'channel_click', { 'channel_name': channelName, 'category': categoryName, 'link_url': url });
