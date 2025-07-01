@@ -78,7 +78,7 @@ h1 {
     margin-bottom: var(--spacing-xs);
     position: relative;
     /* ปรับ height ให้ยืดหยุ่นมากขึ้นด้วย min-height หรือตรวจสอบให้แน่ใจว่า 20px เพียงพอ */
-    min-height: 20px; 
+    min-height: 30px; 
     overflow: hidden;
 }
 
@@ -89,7 +89,7 @@ h1 {
     font-family: 'Kanit', sans-serif;
     font-size: clamp(12px, 2vw, 16px);
     font-weight: 700;
-    animation: marquee 20s linear infinite; /* ปรับให้ช้าลงเป็น 20 วินาที */
+    animation: marquee 10s linear infinite; /* ปรับให้ช้าลงเป็น 20 วินาที */
     position: absolute;
     top: 0;
     left: 0;
