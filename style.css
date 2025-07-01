@@ -27,8 +27,8 @@ html, body {
     color: var(--light-text);
     font-family: 'Arial', sans-serif;
     text-align: center;
-    /* ลบ user-select: none; ออกจาก body เพื่อให้ผู้ใช้เลือกข้อความได้ตามปกติ */
-    /* การป้องกันการเลือกข้อความจะถูกจัดการด้วย JavaScript ในบางส่วน */
+    /* User-select: none ถูกลบออกจาก body เพื่อให้ผู้ใช้เลือกข้อความได้ตามปกติ */
+    /* การป้องกันการเลือกข้อความจะถูกจัดการด้วย JavaScript ในบางส่วน (หากยังคงมีอยู่) แต่แนะนำให้พิจารณาลบออกเพื่อประสบการณ์ผู้ใช้ที่ดีขึ้น */
 }
 
 /* --- Animations --- */
@@ -38,8 +38,10 @@ html, body {
 }
 
 @keyframes marquee {
-    0% { transform: translateX(100%); } /* Start from right */
-    100% { transform: translateX(-100%); } /* Go to far left */
+    /* ปรับให้ข้อความเคลื่อนที่จากขวาไปซ้ายอย่างต่อเนื่อง */
+    /* เริ่มต้นจากขวาของ container และเลื่อนออกไปทางซ้ายทั้งหมด รวมถึงความกว้างของข้อความเอง */
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); } /* หรืออาจใช้ calc(-100% - ระยะห่าง) หากต้องการให้มีช่องว่างระหว่างรอบ */
 }
 
 @keyframes spin {
