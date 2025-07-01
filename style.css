@@ -1,0 +1,313 @@
+:root {
+    --dark-bg: #1a1a1a;
+    --light-text: #f0f0f0;
+    --white: #FFFFFF;
+    --red-accent: #ff4d4d;
+    --line-blue: #2196F3;
+    --line-green: #00B900;
+    --border-radius: 8px;
+    --spacing-xs: 5px;
+    --spacing-sm: 8px;
+    --spacing-md: 10px;
+    --spacing-lg: 15px;
+    --spacing-xl: 20px;
+}
+
+/* --- Global Styles --- */
+html, body {
+    margin: 0;
+    padding: 0 var(--spacing-md);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-x: hidden;
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    /* ลบ user-select: none; ออกจาก body เพื่อให้ผู้ใช้เลือกข้อความได้ตามปกติ */
+    /* การป้องกันการเลือกข้อความจะถูกจัดการด้วย JavaScript ในบางส่วน */
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes marquee {
+    0% { transform: translateX(100%); } /* Start from right */
+    100% { transform: translateX(-100%); } /* Go to far left */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- Header Section --- */
+header {
+    background-color: var(--dark-bg);
+    color: var(--white);
+    padding: 2vw 4vw;
+    border-radius: var(--border-radius);
+    margin: 5vh 0 2vh 0;
+    animation: fadeIn 3s ease-out;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: var(--white);
+    text-align: center;
+    font-family: 'Kanit', sans-serif;
+    font-size: clamp(24px, 5vw, 40px);
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4), 0 0 12px rgba(255, 255, 255, 0.2);
+    margin-top: 1px;
+    margin-bottom: var(--spacing-md);
+}
+
+#running-text-container {
+    width: 100%;
+    margin-bottom: var(--spacing-xs);
+    position: relative;
+    /* ปรับ height ให้ยืดหยุ่นมากขึ้นด้วย min-height หรือตรวจสอบให้แน่ใจว่า 20px เพียงพอ */
+    min-height: 20px; 
+    overflow: hidden;
+}
+
+#running-text {
+    display: inline-block;
+    white-space: nowrap;
+    color: var(--red-accent);
+    font-family: 'Kanit', sans-serif;
+    font-size: clamp(12px, 2vw, 16px);
+    font-weight: 700;
+    animation: marquee 15s linear infinite;
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    cursor: default;
+}
+
+#current-datetime {
+    font-family: 'Kanit', sans-serif;
+    font-size: clamp(14px, 2.5vw, 20px);
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    font-weight: 400;
+}
+
+#line-group-info {
+    font-family: 'Kanit', sans-serif;
+    font-size: clamp(14px, 2.5vw, 20px);
+    color: var(--line-blue);
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#line-group-info:hover {
+    color: #1976D2;
+}
+
+#line-group-info i {
+    font-size: 25px;
+    vertical-align: middle;
+    color: var(--line-green);
+}
+
+#line-group-info i.fa-brands.fa-line.left-icon {
+    margin-right: var(--spacing-sm);
+}
+
+#line-group-info i.fa-brands.fa-line.right-icon {
+    margin-left: var(--spacing-sm);
+}
+
+/* --- Main Content & Categories --- */
+main.categories-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    width: 100%;
+    max-width: 1200px;
+    margin-top: clamp(30px, 6vw, 50px);
+    padding-bottom: var(--spacing-md);
+    flex-grow: 1;
+    align-items: flex-start;
+}
+
+.category {
+    background-color: var(--dark-bg);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xs);
+    flex: 0 0 auto;
+    width: 220px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* เพิ่ม box-shadow ใน transition */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid var(--dark-bg);
+    height: auto;
+    box-shadow: none; /* สถานะปกติไม่มีเงา */
+}
+
+.category:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* เพิ่มเงาเมื่อ hover */
+}
+
+/* --- Accordion Components --- */
+.accordion-button {
+    background: linear-gradient(145deg, #424242, #333333);
+    color: var(--white);
+    font-family: 'Kanit', sans-serif;
+    font-size: 1.3em;
+    font-weight: bold;
+    padding: 7px 14px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0;
+    transition: background 0.3s ease, transform 0.2s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* เพิ่ม box-shadow ใน transition */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    border: 1px solid var(--white);
+    box-shadow: none; /* สถานะปกติไม่มีเงา */
+}
+
+.accordion-button:hover {
+    background: linear-gradient(145deg, #616161, #505050);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* เพิ่มเงาเมื่อ hover */
+    border-color: var(--white);
+}
+
+.accordion-button:active {
+    transform: translateY(0);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5); /* เงาแบบ inset เมื่อ active */
+    background: #333333;
+    border-color: #AAAAAA;
+}
+
+.accordion-button i {
+    margin-right: var(--spacing-sm);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.accordion-content {
+    max-height: 0;
+    padding: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out, opacity 0.3s ease-out;
+    display: none; /* เริ่มต้นด้วย display: none */
+    opacity: 0;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    position: relative;
+}
+
+.accordion-content.show {
+    display: flex; /* เปลี่ยนเป็น display: flex เมื่อ show */
+    opacity: 1;
+    padding-top: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+}
+
+/* --- Image Styles --- */
+main img {
+    border-radius: var(--border-radius);
+    border: 1px solid var(--white);
+    padding: 3px;
+    margin: 0;
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    /* หากใช้ channel-link เป็น flexbox หรือ grid อาจพิจารณาจัดตำแหน่งด้วย align-items/place-items */
+    vertical-align: middle; 
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; /* เพิ่ม box-shadow ใน transition */
+    cursor: pointer;
+    user-select: none; /* ป้องกันการเลือกรูปภาพ */
+}
+
+main img:hover {
+    transform: scale(1.05);
+    border-color: var(--white);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* เพิ่มเงาเมื่อ hover */
+}
+
+/* --- Footer --- */
+footer {
+    margin-top: auto;
+    padding: var(--spacing-xl);
+    color: var(--light-text);
+    background-color: var(--dark-bg);
+    width: 100%;
+    text-align: center;
+    border-top: none;
+}
+
+/* --- Loading Indicator & No Channels Message --- */
+.loading-indicator, .no-channels-message {
+    width: 100%;
+    text-align: center;
+    padding: var(--spacing-md);
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Kanit', sans-serif;
+    font-size: clamp(14px, 2.5vw, 18px);
+    display: none; /* ซ่อนโดยค่าเริ่มต้น */
+}
+
+.loading-indicator.active, .no-channels-message.active {
+    display: block; /* แสดงเมื่อมี class active */
+}
+
+.loading-indicator i.fa-spinner {
+    animation: spin 1s linear infinite;
+    margin-right: var(--spacing-xs);
+}
+
+/* --- Media Queries --- */
+@media (max-width: 768px) {
+    .categories-container {
+        gap: var(--spacing-md);
+    }
+    .category {
+        width: calc(50% - var(--spacing-lg)); /* ปรับให้เหมาะสมกับ gap */
+        max-width: unset;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 0 var(--spacing-xs); /* ลด padding ด้านข้างของ body */
+    }
+    .categories-container {
+        gap: var(--spacing-md);
+        padding: 0 var(--spacing-xs) var(--spacing-md) var(--spacing-xs);
+    }
+    .category {
+        width: calc(100% - var(--spacing-md)); /* ปรับให้เหมาะสมกับ padding body และ gap */
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
