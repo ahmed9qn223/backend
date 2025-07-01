@@ -89,7 +89,7 @@ h1 {
     font-family: 'Kanit', sans-serif;
     font-size: clamp(12px, 2vw, 16px);
     font-weight: 700;
-    animation: marquee 10s linear infinite; /* ปรับให้ช้าลงเป็น 20 วินาที */
+    animation: marquee 18s linear infinite; /* ปรับความเร็วเป็น 18 วินาที เพื่อให้วิ่งปกติ */
     position: absolute;
     top: 0;
     left: 0;
