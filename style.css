@@ -78,7 +78,7 @@ h1 {
     margin-bottom: var(--spacing-xs);
     position: relative;
     /* ปรับ height ให้ยืดหยุ่นมากขึ้นด้วย min-height หรือตรวจสอบให้แน่ใจว่า 20px เพียงพอ */
-    min-height: 30px; 
+    min-height: 20px; 
     overflow: hidden;
 }
 
@@ -89,12 +89,12 @@ h1 {
     font-family: 'Kanit', sans-serif;
     font-size: clamp(12px, 2vw, 16px);
     font-weight: 700;
-    animation: marquee 18s linear infinite; /* ปรับความเร็วเป็น 18 วินาที เพื่อให้วิ่งปกติ */
+    animation: marquee 15s linear infinite;
     position: absolute;
     top: 0;
     left: 0;
-    min-width: 200%; /* เพิ่มความกว้างขั้นต่ำเป็น 200% */
-    padding-right: 80vw; /* เพิ่ม padding ขวาให้มากขึ้นเป็น 80vw */
+    min-width: 150%; /* เพิ่มความกว้างขั้นต่ำ เพื่อให้มีพื้นที่สำหรับ padding และข้อความวน */
+    padding-right: 50vw; /* เพิ่ม padding ขวา เพื่อให้มีช่องว่างเมื่อข้อความวนกลับมา */
     cursor: default;
 }
 
