@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // เพิ่มช่องว่างเพิ่มเติมด้านท้ายข้อความที่วิ่ง เพื่อให้มีช่องว่างระหว่างรอบ
                 // การทำซ้ำข้อความพร้อมช่องว่างเยอะๆ จะช่วยให้ marquee ดูต่อเนื่องและมีระยะห่างที่ปลาย
                 const originalText = textsData.runningText;
-                const separator = "               "; // เพิ่มช่องว่างเยอะๆ
+                const separator = "                                    "; // เพิ่มช่องว่างเยอะๆ
                 runningTextElement.textContent = originalText + separator + originalText + separator + originalText; // ทำซ้ำ 3 รอบ
             }
             if (footerTextElement && textsData.footerText) {
