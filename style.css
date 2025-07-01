@@ -89,12 +89,12 @@ h1 {
     font-family: 'Kanit', sans-serif;
     font-size: clamp(12px, 2vw, 16px);
     font-weight: 700;
-    animation: marquee 15s linear infinite;
+    animation: marquee 20s linear infinite; /* ปรับให้ช้าลงเป็น 20 วินาที */
     position: absolute;
     top: 0;
     left: 0;
-    min-width: 150%; /* เพิ่มความกว้างขั้นต่ำ เพื่อให้มีพื้นที่สำหรับ padding และข้อความวน */
-    padding-right: 70vw; /* เพิ่ม padding ขวา เพื่อให้มีช่องว่างเมื่อข้อความวนกลับมา */
+    min-width: 200%; /* เพิ่มความกว้างขั้นต่ำเป็น 200% */
+    padding-right: 80vw; /* เพิ่ม padding ขวาให้มากขึ้นเป็น 80vw */
     cursor: default;
 }
 
