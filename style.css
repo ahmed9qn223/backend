@@ -93,7 +93,8 @@ h1 {
     position: absolute;
     top: 0;
     left: 0;
-    min-width: 100%;
+    min-width: 150%; /* เพิ่มความกว้างขั้นต่ำ เพื่อให้มีพื้นที่สำหรับ padding และข้อความวน */
+    padding-right: 50vw; /* เพิ่ม padding ขวา เพื่อให้มีช่องว่างเมื่อข้อความวนกลับมา */
     cursor: default;
 }
 
