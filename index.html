@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ทีวีออนไลน์ รวมลิงก์ดูทีวี กีฬา และหนังออนไลน์ในที่เดียว">
+    <meta name="keywords" content="ทีวีออนไลน์, ดูหนัง, กีฬา, YouTube">
+    <title>ทีวีออนไลน์ ดูฟรีไม่เสียรายเดือน</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KBRV24KW7F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KBRV24KW7F');
+    </script>
+</head>
+<body>
+    <header>
+        <div id="running-text-container">
+            <div id="running-text">
+                </div>
+        </div>
+        <h1>เชิญดูฟรีไม่เสียรายเดือน</h1>
+        <time id="current-datetime" aria-live="off"></time>
+        <a href="https://line.me/ti/g2/7xI-GwYG_G9qyuLqXhj79IwFj4Gv1-6boc5DuA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" id="line-group-info" target="_blank" rel="noopener">
+            <i class="fa-brands fa-line left-icon"></i> เข้ากลุ่มไลน์อัพเดทต่างๆ
+            <i class="fa-brands fa-line right-icon"></i>
+        </a>
+    </header>
+
+    <main class="categories-container">
+        <div class="category">
+            <button class="accordion-button" aria-expanded="false" aria-controls="content-thai-tv">
+                <i class="fas fa-tv"></i> ทีวีดิจิตอล
+            </button>
+            <div id="content-thai-tv" class="accordion-content">
+                <div class="loading-indicator"><i class="fas fa-spinner"></i> กำลังโหลดช่อง...</div>
+                <div class="no-channels-message">ไม่พบช่องในหมวดหมู่นี้</div>
+            </div>
+        </div>
+
+        <div class="category">
+            <button class="accordion-button" aria-expanded="false" aria-controls="content-sport">
+                <i class="fas fa-running"></i> กีฬา
+            </button>
+            <div id="content-sport" class="accordion-content">
+                <div class="loading-indicator"><i class="fas fa-spinner"></i> กำลังโหลดช่อง...</div>
+                <div class="no-channels-message">ไม่พบช่องในหมวดหมู่นี้</div>
+            </div>
+        </div>
+
+        <div class="category">
+            <button class="accordion-button" aria-expanded="false" aria-controls="content-movies">
+                <i class="fas fa-film"></i> หนังทีวี
+            </button>
+            <div id="content-movies" class="accordion-content">
+                <div class="loading-indicator"><i class="fas fa-spinner"></i> กำลังโหลดช่อง...</div>
+                <div class="no-channels-message">ไม่พบช่องในหมวดหมู่นี้</div>
+            </div>
+        </div>
+
+        <div class="category">
+            <button class="accordion-button" aria-expanded="false" aria-controls="content-documentary">
+                <i class="fas fa-book"></i> สารคดี
+            </button>
+            <div id="content-documentary" class="accordion-content">
+                <div class="loading-indicator"><i class="fas fa-spinner"></i> กำลังโหลดช่อง...</div>
+                <div class="no-channels-message">ไม่พบช่องในหมวดหมู่นี้</div>
+            </div>
+        </div>
+
+        <div class="category">
+            <button class="accordion-button" aria-expanded="false" aria-controls="content-iptv">
+                <i class="fas fa-network-wired"></i> IPTV
+            </button>
+            <div id="content-iptv" class="accordion-content">
+                <div class="loading-indicator"><i class="fas fa-spinner"></i> กำลังโหลดช่อง...</div>
+                <div class="no-channels-message">ไม่พบช่องในหมวดหมู่นี้</div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p id="footer-text">
+            </p>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
