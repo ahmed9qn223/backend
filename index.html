@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เว็บรวบรวมคำคม</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,400;0,700;1,400&display=swap');
+        body { font-family: 'Sarabun', sans-serif; background-color: #f4f4f9; color: #333; margin: 0; padding: 2rem; display: flex; flex-direction: column; align-items: center; }
+        h1 { color: #4a4a4a; border-bottom: 3px solid #7a7a7a; padding-bottom: 10px; margin-bottom: 2rem; }
+        #quotes-container { max-width: 800px; width: 100%; }
+        .quote-card { background-color: #ffffff; border-left: 5px solid #5d5d5d; margin-bottom: 1.5rem; padding: 1.5rem; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.2s ease-in-out; }
+        .quote-card:hover { transform: translateY(-5px); }
+        .quote-text { font-size: 1.5rem; font-style: italic; margin-bottom: 1rem; }
+        .quote-author { font-size: 1.1rem; font-weight: bold; text-align: right; color: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>คำคมสร้างแรงบันดาลใจ</h1>
+    <div id="quotes-container"><p>กำลังโหลดข้อมูลคำคม...</p></div>
+
+    <script>
+        // --- จุดที่แก้ไข ---
+        // เปลี่ยนจากการเรียก API เป็นการเรียกไฟล์โดยตรง
+        const dataUrl = 'quotes.json';
+
+        const quotesContainer = document.getElementById('quotes-container');
+
+        fetch(dataUrl)
+            .then(response => response.json())
+            .then(quotes => {
+                quotesContainer.innerHTML = ''; 
+                quotes.forEach(quote => {
+                    const card = document.createElement('div');
+                    card.className = 'quote-card';
+                    card.innerHTML = `
+                        <p class="quote-text">“${quote.text}”</p>
+                        <p class="quote-author">- ${quote.author}</p>
+                    `;
+                    quotesContainer.appendChild(card);
+                });
+            })
+            .catch(error => {
+                console.error('เกิดข้อผิดพลาด:', error);
+                quotesContainer.innerHTML = '<p>ขออภัย, ไม่สามารถโหลดข้อมูลได้ในขณะนี้</p>';
+            });
+    </script>
+</body>
+</html>
