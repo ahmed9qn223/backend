@@ -1,10 +1,10 @@
 [
   {
     "category": "ทีวีดิจิตอล",
-    "name": "ALTV4",
-    "img_src": "https://dookeela.live/uploads/1725896083.png",
-    "data_url": "intent://dookeela.live/live-tv/altv4#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง ALTV4"
+    "name": "ป้าลุยแหลกแหกวิวาห์ป่วน (2025)",
+    "img_src": "https://www.123-hdd.com/wp-content/uploads/2025/07/Madeas-Destination-Wedding-2025-%E0%B8%9B%E0%B9%89%E0%B8%B2%E0%B8%A5%E0%B8%B8%E0%B8%A2%E0%B9%81%E0%B8%AB%E0%B8%A5%E0%B8%81%E0%B9%81%E0%B8%AB%E0%B8%81%E0%B8%A7%E0%B8%B4%E0%B8%A7%E0%B8%B2%E0%B8%AB%E0%B9%8C%E0%B8%9B%E0%B9%88%E0%B8%A7%E0%B8%99-300x450.png",
+    "data_url": "intent://main.24playerhd.com/m3u8/e284c1e39a3ebca769be802e/e284c1e39a3ebca769be802e168.m3u8#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง ป้าลุยแหลกแหกวิวาห์ป่วน (2025)"
   },  
   {
     "category": "ทีวีดิจิตอล",
