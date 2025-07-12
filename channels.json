@@ -15,10 +15,10 @@
   },
   {
     "category": "ทีวีดิจิตอล",
-    "name": "Thai PBS",
-    "img_src": "https://ais-s.ais-vidnt.com/ais/play/origin/LIVE//channelicon/0014.png",
-    "data_url": "intent://thaipbs-live.cdn.byteark.com/live/playlist_1080p/index.m3u8#Intent;package=com.wiseplay;S.userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง Thai PBS"
+    "name": "Superman (2025) ซูเปอร์แมน",
+    "img_src": "https://www.123-hdd.com/wp-content/uploads/2025/07/Superman-2025-%E0%B8%8B%E0%B8%B9%E0%B9%80%E0%B8%9B%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B9%81%E0%B8%A1%E0%B8%99-1-300x450.png",
+    "data_url": "intent://main.24playerhd.com/m3u8/f8d0ab6213956c016469a067/f8d0ab6213956c016469a067168.m3u8#Intent;package=com.wiseplay;S.userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Superman (2025) ซูเปอร์แมน"
   },
   {
     "category": "ทีวีดิจิตอล",
