@@ -1837,7 +1837,7 @@
     "category": "IPTV",
     "name": "Gags",
     "img_src": "https://www.fileinw.com/postor/20240429213343just_for_laughs_gags.jpg",
-    "data_url": "intent://freelive2.inwstream.com:1936/freelive-edge/gags_fw-iptv.stream/chunks.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "data_url": "intent://freelive2.inwstream.com:1936/freelive-edge/gags_iptv.stream/chunks.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
     "aria_label": "ดูช่อง Gags"
   },
   {
@@ -1898,248 +1898,248 @@
   },
   {
     "category": "IPTV",
-    "name": "FW-Ch5HD",
+    "name": "Ch5HD",
     "img_src": "https://www.fileinw.com/postor/20240421225425ch5hd.jpg",
     "data_url": "intent://freelive2.inwstream.com:1936/freelive-edge/dtv01_ch5hd/chunks.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-Ch5HD"
+    "aria_label": "ดูช่อง Ch5HD"
   },
   {
     "category": "IPTV",
-    "name": "FW-NBT HD",
+    "name": "NBT HD",
     "img_src": "https://www.fileinw.com/postor/20240421225446nbthd.jpg",
     "data_url": "intent://freelive2.inwstream.com:1936/freelive-edge/dtv02_nbthd/chunks.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-NBT HD"
+    "aria_label": "ดูช่อง NBT HD"
   },
   {
     "category": "IPTV",
-    "name": "FW-ThaiPBS HD",
+    "name": "ThaiPBS HD",
     "img_src": "https://www.fileinw.com/postor/20240421225507tpbshd.jpg",
     "data_url": "intent://freelive2.inwstream.com:1936/freelive-edge/dtv03_tpbshd/chunks.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-ThaiPBS HD"
+    "aria_label": "ดูช่อง ThaiPBS HD"
   },
   {
     "category": "IPTV",
-    "name": "FW-TSports 7",
+    "name": "TSports 7",
     "img_src": "https://www.fileinw.com/postor/20240421225520tsports7.jpg",
     "data_url": "intent://freelive2.inwstream.com:1936/freelive-edge/dtv07_tsports7/chunks.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-TSports 7"
+    "aria_label": "ดูช่อง TSports 7"
   },
   {
     "category": "IPTV",
-    "name": "FW-TPTV",
+    "name": "TPTV",
     "img_src": "https://www.fileinw.com/postor/20240421225533tptv.jpg",
     "data_url": "intent://freelive2.inwstream.com:1936/freelive-edge/dtv10_tptv/chunks.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-TPTV"
+    "aria_label": "ดูช่อง TPTV"
   },
   {
     "category": "IPTV",
-    "name": "FW-TNN 16",
+    "name": "TNN 16",
     "img_src": "https://www.fileinw.com/postor/20240421225609TNN16.jpg",
     "data_url": "intent://freelive2.inwstream.com:1936/freelive-edge/tnn24/chunks.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-TNN 16"
+    "aria_label": "ดูช่อง TNN 16"
   },
   {
     "category": "IPTV",
-    "name": "FW-JKN 18",
+    "name": "JKN 18",
     "img_src": "https://www.fileinw.com/postor/20240421225631JKN18.jpg",
     "data_url": "intent://freelive2.inwstream.com:1936/freelive-edge/jkn18/chunks.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-JKN 18"
+    "aria_label": "ดูช่อง JKN 18"
   },
   {
     "category": "IPTV",
-    "name": "FW-Nation",
+    "name": "Nation",
     "img_src": "https://www.fileinw.com/postor/20240421225642Nation1.jpg",
     "data_url": "intent://freelive2.inwstream.com:1936/freelive-edge/nation/chunks.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-Nation"
+    "aria_label": "ดูช่อง Nation"
   },
   {
     "category": "IPTV",
-    "name": "FW-Workpoint TV",
+    "name": "Workpoint TV",
     "img_src": "https://www.fileinw.com/postor/20240421225700Workpoint.jpg",
     "data_url": "intent://freelive2.inwstream.com:1936/freelive-edge/workpointtv/chunks.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-Workpoint TV"
+    "aria_label": "ดูช่อง Workpoint TV"
   },
   {
     "category": "IPTV",
-    "name": "FW-True4U",
+    "name": "True4U",
     "img_src": "https://www.fileinw.com/postor/20240421225712True4u.jpg",
     "data_url": "intent://freelive2.inwstream.com:1936/freelive-edge/true4u/chunks.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-True4U"
+    "aria_label": "ดูช่อง True4U"
   },
   {
     "category": "IPTV",
-    "name": "FW-GMM Channel",
+    "name": "GMM Channel",
     "img_src": "https://www.fileinw.com/postor/20240421225727gmmchannel.jpg",
     "data_url": "intent://freelive2.inwstream.com:1936/freelive-edge/dtv25_gmmchannel/chunks.m3u8?#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-GMM Channel"
+    "aria_label": "ดูช่อง GMM Channel"
   },
   {
     "category": "IPTV",
-    "name": "FW-Ch8",
+    "name": "Ch8",
     "img_src": "https://www.fileinw.com/postor/20240421225748ch8.jpg",
     "data_url": "intent://freelive2.inwstream.com:1936/freelive-edge/dtv27_ch8/chunks.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-Ch8"
+    "aria_label": "ดูช่อง Ch8"
   },
   {
     "category": "IPTV",
-    "name": "FW-Mono29",
+    "name": "Mono29",
     "img_src": "https://www.fileinw.com/postor/20240421225827mono29.jpg",
     "data_url": "intent://freelive2.inwstream.com:1936/freelive-edge/dtv29_mono29/chunks.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-Mono29"
+    "aria_label": "ดูช่อง Mono29"
   },
   {
     "category": "IPTV",
-    "name": "FW-MCOT HD",
+    "name": "MCOT HD",
     "img_src": "https://www.fileinw.com/postor/20240421225856mcothd.jpg",
     "data_url": "intent://freelive2.inwstream.com:1936/freelive-edge/dtv30_mcothd/chunks.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-MCOT HD"
+    "aria_label": "ดูช่อง MCOT HD"
   },
   {
     "category": "IPTV",
-    "name": "FW-One HD",
+    "name": "One HD",
     "img_src": "https://www.fileinw.com/postor/20240421225844onehd.jpg",
     "data_url": "intent://freelive2.inwstream.com:1936/freelive-edge/dtv31_onehd/chunks.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-One HD"
+    "aria_label": "ดูช่อง One HD"
   },
   {
     "category": "IPTV",
-    "name": "FW-Thairath TV HD",
+    "name": "Thairath TV HD",
     "img_src": "https://www.fileinw.com/postor/20240421225909thairahttvhd.jpg",
     "data_url": "intent://freelive2.inwstream.com:1936/freelive-edge/dtv32_thairahttvhd/chunks.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-Thairath TV HD"
+    "aria_label": "ดูช่อง Thairath TV HD"
   },
   {
     "category": "IPTV",
-    "name": "FW-Ch3 HD",
+    "name": "Ch3 HD",
     "img_src": "https://www.fileinw.com/postor/20240421225924ch3hd.jpg",
     "data_url": "intent://freelive2.inwstream.com:1936/freelive-edge/dtv33_ch3hd/chunks.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-Ch3 HD"
+    "aria_label": "ดูช่อง Ch3 HD"
   },
   {
     "category": "IPTV",
-    "name": "FW-Amarin TV HD",
+    "name": "Amarin TV HD",
     "img_src": "https://www.fileinw.com/postor/20240421225938amarintvhd.jpg",
     "data_url": "intent://freelive2.inwstream.com:1936/freelive-edge/dtv34_amarintvhd/chunks.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-Amarin TV HD"
+    "aria_label": "ดูช่อง Amarin TV HD"
   },
   {
     "category": "IPTV",
-    "name": "FW-Ch7 HD",
+    "name": "Ch7 HD",
     "img_src": "https://www.fileinw.com/postor/20240421225954ch7hd.jpg",
     "data_url": "intent://freelive2.inwstream.com:1936/freelive-edge/dtv35_ch7hd/chunks.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-Ch7 HD"
+    "aria_label": "ดูช่อง Ch7 HD"
   },
   {
     "category": "IPTV",
-    "name": "FW-PPTV HD",
+    "name": "PPTV HD",
     "img_src": "https://www.fileinw.com/postor/20240421230006pptvhd.jpg",
     "data_url": "intent://freelive2.inwstream.com:1936/freelive-edge/dtv36_pptvhd/chunks.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-PPTV HD"
+    "aria_label": "ดูช่อง PPTV HD"
   },
   {
     "category": "IPTV",
-    "name": "FW-DLTV 1",
+    "name": "DLTV 1",
     "img_src": "https://www.fileinw.com/postor/20240422004212DLTV1.jpg",
     "data_url": "intent://cdn-live.dltv.ac.th/smil:origin01-dltv-01-adaptive.smil/chunklist_w951587384_b3128000_slth.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-DLTV 1"
+    "aria_label": "ดูช่อง DLTV 1"
   },
   {
     "category": "IPTV",
-    "name": "FW-DLTV 2",
+    "name": "DLTV 2",
     "img_src": "https://www.fileinw.com/postor/20240422004220DLTV2.jpg",
     "data_url": "intent://cdn-live.dltv.ac.th/smil:origin01-dltv-02-adaptive.smil/chunklist_w594876423_b1328000_slth.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-DLTV 2"
+    "aria_label": "ดูช่อง DLTV 2"
   },
   {
     "category": "IPTV",
-    "name": "FW-DLTV 3",
+    "name": "DLTV 3",
     "img_src": "https://www.fileinw.com/postor/20240422004228DLTV3.jpg",
     "data_url": "intent://cdn-live.dltv.ac.th/smil:origin01-dltv-03-adaptive.smil/chunklist_w986992059_b1328000_slth.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-DLTV 3"
+    "aria_label": "ดูช่อง DLTV 3"
   },
   {
     "category": "IPTV",
-    "name": "FW-DLTV 4",
+    "name": "DLTV 4",
     "img_src": "https://www.fileinw.com/postor/20240422004241DLTV4.jpg",
     "data_url": "intent://cdn-live.dltv.ac.th/smil:origin01-dltv-04-adaptive.smil/chunklist_w554357474_b1328000_slth.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-DLTV 4"
+    "aria_label": "ดูช่อง DLTV 4"
   },
   {
     "category": "IPTV",
-    "name": "FW-DLTV 5",
+    "name": "DLTV 5",
     "img_src": "https://www.fileinw.com/postor/20240422004253DLTV5.jpg",
     "data_url": "intent://cdn-live.dltv.ac.th/smil:origin01-dltv-05-adaptive.smil/chunklist_w3346927_b1328000_slth.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-DLTV 5"
+    "aria_label": "ดูช่อง DLTV 5"
   },
   {
     "category": "IPTV",
-    "name": "FW-DLTV 6",
+    "name": "DLTV 6",
     "img_src": "https://www.fileinw.com/postor/20240422004308DLTV6.jpg",
     "data_url": "intent://cdn-live.dltv.ac.th/smil:origin02-dltv-06-adaptive.smil/chunklist_w1652092371_b878000_slth.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-DLTV 6"
+    "aria_label": "ดูช่อง DLTV 6"
   },
   {
     "category": "IPTV",
-    "name": "FW-DLTV 7",
+    "name": "DLTV 7",
     "img_src": "https://www.fileinw.com/postor/20240422004329DLTV7.jpg",
     "data_url": "intent://cdn-live.dltv.ac.th/smil:origin02-dltv-07-adaptive.smil/chunklist_w335688357_b878000_slth.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-DLTV 7"
+    "aria_label": "ดูช่อง DLTV 7"
   },
   {
     "category": "IPTV",
-    "name": "FW-DLTV 8",
+    "name": "DLTV 8",
     "img_src": "https://www.fileinw.com/postor/20240422004337DLTV8.jpg",
     "data_url": "intent://cdn-live.dltv.ac.th/smil:origin02-dltv-08-adaptive.smil/chunklist_w1569590117_b878000_slth.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-DLTV 8"
+    "aria_label": "ดูช่อง DLTV 8"
   },
   {
     "category": "IPTV",
-    "name": "FW-DLTV 9",
+    "name": "DLTV 9",
     "img_src": "https://www.fileinw.com/postor/20240422004350DLTV9.jpg",
     "data_url": "intent://cdn-live.dltv.ac.th/smil:origin02-dltv-09-adaptive.smil/chunklist_w1142771215_b878000_slth.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-DLTV 9"
+    "aria_label": "ดูช่อง DLTV 9"
   },
   {
     "category": "IPTV",
-    "name": "FW-DLTV 10",
+    "name": "DLTV 10",
     "img_src": "https://www.fileinw.com/postor/20240422004400DLTV10.jpg",
     "data_url": "intent://cdn-live.dltv.ac.th/smil:origin02-dltv-10-adaptive.smil/chunklist_w1166078641_b878000_slth.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-DLTV 10"
+    "aria_label": "ดูช่อง DLTV 10"
   },
   {
     "category": "IPTV",
-    "name": "FW-DLTV 11",
+    "name": "DLTV 11",
     "img_src": "https://www.fileinw.com/postor/20240422004411DLTV11.jpg",
     "data_url": "intent://cdn-live.dltv.ac.th/smil:origin03-dltv-11-adaptive.smil/chunklist_w1196265221_b878000_slth.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-DLTV 11"
+    "aria_label": "ดูช่อง DLTV 11"
   },
   {
     "category": "IPTV",
-    "name": "FW-DLTV 12",
+    "name": "DLTV 12",
     "img_src": "https://www.fileinw.com/postor/20240422004423DLTV12.jpg",
     "data_url": "intent://cdn-live.dltv.ac.th/smil:origin03-dltv-12-adaptive.smil/chunklist_w1507742155_b878000_slth.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-DLTV 12"
+    "aria_label": "ดูช่อง DLTV 12"
   },
   {
     "category": "IPTV",
-    "name": "FW-DLTV 13",
+    "name": "DLTV 13",
     "img_src": "https://www.fileinw.com/postor/20240422004434DLTV13.jpg",
     "data_url": "intent://cdn-live.dltv.ac.th/smil:origin03-dltv-13-adaptive.smil/chunklist_w1331829618_b878000_slth.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-DLTV 13"
+    "aria_label": "ดูช่อง DLTV 13"
   },
   {
     "category": "IPTV",
-    "name": "FW-DLTV 14",
+    "name": "DLTV 14",
     "img_src": "https://www.fileinw.com/postor/20240422004445DLTV14.jpg",
     "data_url": "intent://cdn-live.dltv.ac.th/smil:origin03-dltv-14-adaptive.smil/chunklist_w633105726_b878000_slth.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-DLTV 14"
+    "aria_label": "ดูช่อง DLTV 14"
   },
   {
     "category": "IPTV",
-    "name": "FW-DLTV 15",
+    "name": "DLTV 15",
     "img_src": "https://www.fileinw.com/postor/20240422004500DLTV15.jpg",
     "data_url": "intent://cdn-live.dltv.ac.th/smil:origin03-dltv-15-adaptive.smil/chunklist_w2016410619_b878000_slth.m3u8#Intent;package=com.wiseplay;S.referer=https://inwiptv.com/demo.php/&userAgent=exo_player;S.title=OKTV;scheme=https;type=video/mp4;end",
-    "aria_label": "ดูช่อง FW-DLTV 15"
+    "aria_label": "ดูช่อง DLTV 15"
   },
   {
     "category": "สารคดี",
