@@ -1386,6 +1386,265 @@
     "aria_label": "ดูช่อง บีอินสปอตส์ 9"
   },
   {
+    "category": "กีฬา",
+    "name": "ABC USA",
+    "img_src": "",
+    "data_url": "intent://stream/stream-51.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง ABC USA"
+  },
+  {
+    "category": "กีฬา",
+    "name": "A&E USA",
+    "img_src": "",
+    "data_url": "intent://stream/stream-302.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง A&E USA"
+  },
+  {
+    "category": "กีฬา",
+    "name": "AMC USA",
+    "img_src": "",
+    "data_url": "intent://stream/stream-303.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง AMC USA"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Animal Planet",
+    "img_src": "",
+    "data_url": "intent://stream/stream-304.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Animal Planet"
+  },
+  {
+    "category": "กีฬา",
+    "name": "ACC Network USA",
+    "img_src": "",
+    "data_url": "intent://stream/stream-666.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง ACC Network USA"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Astro SuperSport 1",
+    "img_src": "",
+    "data_url": "intent://stream/stream-123.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Astro SuperSport 1"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Astro SuperSport 2",
+    "img_src": "",
+    "data_url": "intent://stream/stream-124.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Astro SuperSport 2"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Astro SuperSport 3",
+    "img_src": "",
+    "data_url": "intent://stream/stream-125.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Astro SuperSport 3"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Astro SuperSport 4",
+    "img_src": "",
+    "data_url": "intent://stream/stream-126.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Astro SuperSport 4"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Arena Sport 1 Premium",
+    "img_src": "",
+    "data_url": "intent://stream/stream-134.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Arena Sport 1 Premium"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Arena Sport 2 Premium",
+    "img_src": "",
+    "data_url": "intent://stream/stream-135.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Arena Sport 2 Premium"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Arena Sport 3 Premium",
+    "img_src": "",
+    "data_url": "intent://stream/stream-139.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Arena Sport 3 Premium"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Arena Sport 1 Serbia",
+    "img_src": "",
+    "data_url": "intent://stream/stream-429.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Arena Sport 1 Serbia"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Arena Sport 2 Serbia",
+    "img_src": "",
+    "data_url": "intent://stream/stream-430.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Arena Sport 2 Serbia"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Arena Sport 3 Serbia",
+    "img_src": "",
+    "data_url": "intent://stream/stream-431.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Arena Sport 3 Serbia"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Arena Sport 4 Serbia",
+    "img_src": "",
+    "data_url": "intent://stream/stream-581.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Arena Sport 4 Serbia"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Arena Sport 1 Croatia",
+    "img_src": "",
+    "data_url": "intent://stream/stream-432.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Arena Sport 1 Croatia"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Arena Sport 2 Croatia",
+    "img_src": "",
+    "data_url": "intent://stream/stream-433.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Arena Sport 2 Croatia"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Arena Sport 3 Croatia",
+    "img_src": "",
+    "data_url": "intent://stream/stream-434.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Arena Sport 3 Croatia"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Arena Sport 4 Croatia",
+    "img_src": "",
+    "data_url": "intent://stream/stream-580.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Arena Sport 4 Croatia"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Alkass One",
+    "img_src": "",
+    "data_url": "intent://stream/stream-781.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Alkass One"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Alkass Two",
+    "img_src": "",
+    "data_url": "intent://stream/stream-782.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Alkass Two"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Alkass Three",
+    "img_src": "",
+    "data_url": "intent://stream/stream-783.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Alkass Three"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Alkass Four",
+    "img_src": "",
+    "data_url": "intent://stream/stream-784.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Alkass Four"
+  },
+  {
+    "category": "กีฬา",
+    "name": "ABS-CBN",
+    "img_src": "",
+    "data_url": "intent://stream/stream-785.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง ABS-CBN"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Arena Sport 1 BiH",
+    "img_src": "",
+    "data_url": "intent://stream/stream-579.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Arena Sport 1 BiH"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Abu Dhabi Sports 1 UAE",
+    "img_src": "",
+    "data_url": "intent://stream/stream-600.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Abu Dhabi Sports 1 UAE"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Abu Dhabi Sports 2 UAE",
+    "img_src": "",
+    "data_url": "intent://stream/stream-601.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Abu Dhabi Sports 2 UAE"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Abu Dhabi Sports 1 Premium",
+    "img_src": "",
+    "data_url": "intent://stream/stream-609.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Abu Dhabi Sports 1 Premium"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Abu Dhabi Sports 2 Premium",
+    "img_src": "",
+    "data_url": "intent://stream/stream-610.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Abu Dhabi Sports 2 Premium"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Astro Cricket",
+    "img_src": "",
+    "data_url": "intent://stream/stream-370.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Astro Cricket"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Antena 3 Spain",
+    "img_src": "",
+    "data_url": "intent://stream/stream-531.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Antena 3 Spain"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Adult Swim",
+    "img_src": "",
+    "data_url": "intent://stream/stream-295.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Adult Swim"
+  },
+  {
+    "category": "กีฬา",
+    "name": "AXN Movies Portugal",
+    "img_src": "",
+    "data_url": "intent://stream/stream-717.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง AXN Movies Portugal"
+  },
+  {
+    "category": "กีฬา",
+    "name": "Arte DE",
+    "img_src": "",
+    "data_url": "intent://stream/stream-725.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง Arte DE"
+  },
+  {
+    "category": "กีฬา",
+    "name": "AXS TV USA",
+    "img_src": "",
+    "data_url": "intent://stream/stream-742.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง AXS TV USA"
+  },
+  {
+    "category": "กีฬา",
+    "name": "ABCNY USA",
+    "img_src": "",
+    "data_url": "intent://stream/stream-766.php#Intent;package=com.wiseplay;S.userAgent=android;S.title=OKTV;scheme=https;type=video/mp4;end",
+    "aria_label": "ดูช่อง ABCNY USA"
+  },
+  {
     "category": "หนังทีวี",
     "name": "AMC | USA",
     "img_src": "https://dookeela.live/uploads/1716339097.png",
