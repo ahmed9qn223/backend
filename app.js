@@ -12,7 +12,6 @@
 const CH_URL  = 'channels.json';
 const CAT_URL = 'categories.json';
 const TIMEZONE = 'Asia/Bangkok';
-const CACHE_KEY = 'TV_DATA_CACHE_V4'; // bump to avoid old cached shape
 
 const SWITCH_OUT_MS   = 140;
 const STAGGER_STEP_MS = 22;
@@ -41,91 +40,42 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // เล่นช่องที่เคยเล่นครั้งล่าสุด (ถ้ามี)
   const lastId = safeGet('lastId');
-  if (lastId && Array.isArray(channels)) {
+  if (lastId) {
     const idx = channels.findIndex(c => c.id === lastId);
     if (idx >= 0) playByIndex(idx, {scroll:false});
   }
 });
 
 /* ------------------------ Load / Cache ------------------------ */
-
 async function loadData(){
-
-function pickFirstNonEmptyCategory(){
-  try{
-    const order = (categories?.order)||[];
-    const counts = {};
-    for(const cat of order){
-      counts[cat] = (Array.isArray(channels)?channels:[]).filter(c=>getCategory(c)===cat).length;
-    }
-    // if currentFilter is empty or no items, switch to first with items
-    const has = counts[currentFilter]||0;
-    if (!has){
-      for(const cat of order){
-        if (counts[cat]>0){ currentFilter = cat; break; }
-      }
-    }
-    console.log('[FLOWTV] counts by category:', counts, 'current:', currentFilter);
-  }catch(e){ console.warn('pickFirstNonEmptyCategory failed', e); }
-}
-
-  const cacheKey = CACHE_KEY;
+  const cacheKey = 'TV_DATA_CACHE_V1';
   try {
     const cache = JSON.parse(localStorage.getItem(cacheKey) || 'null');
     if (cache && Date.now() - cache.t < 12*60*60*1000) {
       categories = cache.cat;
-      channels   = Array.isArray(cache.ch) ? cache.ch : (cache.ch?.channels || []);
-      if (!Array.isArray(channels)) throw new Error('bad cache shape');
+      channels   = cache.ch;
       return;
     }
   } catch {}
 
-  const cat = await fetch(CAT_URL, {cache:'no-store'}).then(r=>r.json()).catch(()=>null);
-  categories = cat || {
+  const [catRes, chRes] = await Promise.all([
+    fetch(CAT_URL, {cache:'no-store'}).then(r=>r.json()).catch(()=>null),
+    fetch(CH_URL, {cache:'no-store'}).then(r=>r.json())
+  ]);
+
+  categories = catRes || {
     order: ['ข่าว','บันเทิง','กีฬา','สารคดี','เพลง','หนัง'],
     default: 'บันเทิง',
     rules: []
   };
 
-  // Determine channel files:
-  // Priority:
-  //   1) categories.files = { 'ข่าว':'channels/news.json', ... }
-  //   2) categories.order -> try 'channels/<slug>.json' (optional)
-  //   3) fallback to channels.json
-  let files = [];
-  if (categories && categories.files && typeof categories.files === 'object'){
-    for (const [catName, path] of Object.entries(categories.files)){
-      if (typeof path === 'string' && path) files.push({file:path, cat:catName});
-    }
-  } else if (Array.isArray(categories?.order)) {
-    files = categories.order.map(n => ({file: `channels/${slugifyThai(n)}.json`, cat: n, optional: true}));
-  }
-  if (files.length === 0) files.push({file: CH_URL});
+  // รองรับสคีมาเก่า (เป็น array) / ใหม่ ({channels:[]})
+  channels = Array.isArray(chRes) ? chRes : (chRes.channels || []);
 
-  // Fetch all files (ignore 404 for optional entries)
-  let all = [];
-  for (const f of files){
-    try{
-      const res = await fetch(f.file, {cache:'no-store'});
-      if (!res.ok) { if (f.optional) continue; throw new Error('HTTP '+res.status); }
-      const data = await res.json();
-      let arr = Array.isArray(data) ? data : (data.channels || []);
-      if (!Array.isArray(arr)) arr = [];
-      // Stamp category if provided
-      if (f.cat){
-        arr = arr.map(x => (x.category ? x : Object.assign({category:f.cat}, x)));
-      }
-      all = all.concat(arr);
-    }catch(e){
-      if (!f.optional) console.warn('Load failed:', f.file, e);
-    }
-  }
-  channels = all;
-
-  // Fill id
+  // เติม id ถ้ายังไม่มี
   channels.forEach((c,i)=>{ if(!c.id) c.id = genIdFrom(c, i); });
 
-  localStorage.setItem(CACHE_KEY, JSON.stringify({t:Date.now(), cat:categories, ch:channels}));
+  localStorage.setItem('TV_DATA_CACHE_V1', JSON.stringify({t:Date.now(), cat:categories, ch:channels}));
 }
 
 /* ------------------------ Header: Clock & Now Playing ------------------------ */
@@ -262,13 +212,7 @@ function ensureGrid(){
 function render(opt={withEnter:false}){
   const grid = ensureGrid(); grid.innerHTML='';
 
-  const list = (Array.isArray(channels) ? channels : []).filter(c => getCategory(c) === currentFilter);
-  if (!list.length){
-    const cont = document.getElementById('cards');
-    if (cont){ cont.innerHTML = `<div style="padding:2rem;text-align:center;opacity:.8">ไม่พบช่องในหมวดนี้</div>`; }
-    highlightActiveTab();
-    return;
-  }
+  const list = channels.filter(c => getCategory(c) === currentFilter);
   const cols = computeGridCols(grid);
 
   list.forEach((ch,i)=>{
@@ -382,17 +326,10 @@ function makeJwSource(s, ch){
 }
 function detectType(u){ u=(u||'').split('?')[0].toLowerCase(); if(u.endsWith('.m3u8'))return'hls'; if(u.endsWith('.mpd'))return'dash'; return'auto'; }
 function wrapWithProxyIfNeeded(url, ch){
-  if ((ch.proxy || false) && (window.PROXY_BASE || window.PHP_PROXY)) {
+  if (window.PROXY_BASE && (ch.proxy || false)) {
     const payload = { src:url, referrer: ch.referrer||'', ua: ch.ua||'', headers: ch.headers||{} };
-    const json = JSON.stringify(payload);
-    if (window.PROXY_BASE){
-      const b64 = btoa(unescape(encodeURIComponent(json)));
-      return `${window.PROXY_BASE}/p/${b64}`;
-    }
-    if (window.PHP_PROXY){
-      const b64 = btoa(unescape(encodeURIComponent(json))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
-      return `${window.PHP_PROXY}?b64=${b64}`;
-    }
+    const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+    return `${window.PROXY_BASE}/p/${b64}`;
   }
   return url;
 }
@@ -453,14 +390,7 @@ function escapeHtml(s){
 function debounce(fn,wait=150){let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),wait)}}
 function safeGet(k){ try{ return localStorage.getItem(k); }catch{ return null; } }
 function safeSet(k,v){ try{ localStorage.setItem(k,v); }catch{} }
-function genIdFrom(ch,i){
-  const n = (ch?.name || ch?.title || ch?.src || '').toString().trim();
-  const s = n.toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9\-ก-๙]/g,'');
-  return (s || ('ch-' + i)) + '-' + i;
-}
-function slugifyThai(s){
-  return (s||'').toString().trim().toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9\-ก-๙]/g,'').replace(/-+/g,'-');
-
+function genIdFrom(ch,i){ return (ch.name?.toString().trim() || `ch-${i}`).toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9\-]/g,'') + '-' + i }
 
 /* ------------------------ Icons (filled) ------------------------ */
 function getIconSVG(n){
