@@ -1,0 +1,18 @@
+{
+  "order": ["ข่าว", "บันเทิง", "กีฬา", "สารคดี", "เพลง", "หนัง"],
+  "default": "บันเทิง",
+  "rules": [
+    { "category": "หนัง",
+      "include": ["hbo","cinemax","mono29plus","/109/","/10[3-7]/"],
+      "useWideLogo": true
+    },
+    { "category": "ข่าว",
+      "include": ["ข่าว","tnn","nation","thairath","nbt","pbs","jkn"] },
+    { "category": "กีฬา",
+      "include": ["sport","กีฬา","t\\s?sports","pptv\\s?hd\\s?36"] },
+    { "category": "สารคดี",
+      "include": ["สารคดี","discovery","animal","nat.?geo","history","documentary"] },
+    { "category": "เพลง",
+      "include": ["เพลง","music","mtv","channel\\s?v","music\\s?hits"] }
+  ]
+}
