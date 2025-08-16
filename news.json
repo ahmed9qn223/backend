@@ -1,0 +1,518 @@
+[
+  {
+    "name": "NBT 2HD",
+    "logo": "https://ais-s.ais-vidnt.com/ais/play/origin/LIVE//channelicon/0001.png",
+    "src": "https://udn-streamer1.cdn.3bbtv.com:8443/3bb/live/2/2.mpd",
+    "type": "dash",
+    "category": "ข่าว",
+    "drm": {
+      "clearkey": {
+        "keyId": "ca20a93cf8e3421dafbd5bdb1990081b",
+        "key": "86ae86a7391c481ea93eecdb740f0a14"
+      }
+    }
+  },
+  {
+    "id": "hls_ipFWMov",
+    "name": "FWMov",
+    "category": "ข่าว",
+    "logo": "https://img2.pic.in.th/pic/20240429213309FWMOV__2_-removebg-preview.png",
+    "src": "https://freelive2.inwstream.com:1936/freelive-edge/fwmov_fw-iptv.stream/playlist.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipFWSov",
+    "name": "FWSov",
+    "category": "ข่าว",
+    "logo": "https://img5.pic.in.th/file/secure-sv1/20240429213326FWSOV-removebg-preview.png",
+    "src": "https://freelive2.inwstream.com:1936/freelive-edge/fwsov_fw-iptv.stream/playlist.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipFWDoc",
+    "name": "FWDoc",
+    "category": "ข่าว",
+    "logo": "https://img2.pic.in.th/pic/20240617204638FWDoc-removebg-preview.png",
+    "src": "https://freelive2.inwstream.com:1936/freelive-edge/fwdoc_fw-iptv.stream/chunks.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipFWToon",
+    "name": "FWToon",
+    "category": "ข่าว",
+    "logo": "https://i.postimg.cc/8PxLS4hJ/IMG-2552.png",
+    "src": "https://freelive2.inwstream.com:1936/freelive-edge/fwtoon_fw-iptv.stream/chunks.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipChiangraiChannel",
+    "name": "ChiangraiChannel",
+    "category": "ข่าว",
+    "logo": "https://i.postimg.cc/GtRYFgq8/IMG-2429.png",
+    "src": "https://live.thaitvstream.com/play/chiangrai/index.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipCoolChannel",
+    "name": "CoolChannel",
+    "category": "ข่าว",
+    "logo": "https://i.postimg.cc/63sPMnRJ/IMG-1854.png",
+    "src": "https://live-iptv.cool-channel.com/cool/live-720P.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipChannel8",
+    "name": "Channel8",
+    "category": "ข่าว",
+    "logo": "https://i.postimg.cc/RFVxDzJm/IMG-1839.png",
+    "src": "https://freelive.inwstream.com:1936/freelive-edge/dtv27_ch8/chunks.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipChannel82",
+    "name": "Channel8",
+    "category": "ข่าว",
+    "logo": "https://i.postimg.cc/RFVxDzJm/IMG-1839.png",
+    "src": "https://cdn-th-vip.livestreaming.in.th/ch8/ch8/chunklist_w1708048131.m3u8",
+    "type": "hls",
+    "badge": "สำรอง"
+  },
+  {
+    "id": "hls_ipNBT11North",
+    "name": "NBT11 ภาคเหนือ",
+    "category": "ข่าว",
+    "logo": "https://i.postimg.cc/nLfbZvzV/IMG-2399.png",
+    "src": "https://cdn-edge-ott.prd.go.th/live_vlc/smil:bfe6-faf5-827f-6228-2aa1.smil/chunklist_w695610859_b2128000.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipNBT11Isan",
+    "name": "NBT11 ภาคอีสาน",
+    "category": "ข่าว",
+    "logo": "https://i.postimg.cc/xTN4CcBX/IMG-2401.png",
+    "src": "https://cdn-edge-ott.prd.go.th/live_vlc/smil:7721-732d-60a6-13c1-b16d.smil/chunklist_w579192591_b2128000.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipNBT11Central",
+    "name": "NBT11 ภาคกลาง",
+    "category": "ข่าว",
+    "logo": "https://i.postimg.cc/fTY1CVC6/IMG-2403.png",
+    "src": "https://cdn-edge-ott.prd.go.th/live_vlc/smil:01f1-8b4b-971e-aa35-d5fa.smil/playlist.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipNBT11South",
+    "name": "NBT11 ภาคใต้",
+    "category": "ข่าว",
+    "logo": "https://i.postimg.cc/5t2GfnJV/IMG-2405.png",
+    "src": "https://cdn-edge-ott.prd.go.th/live_vlc/smil:406a-211e-df39-045c-4048.smil/chunklist_w1186889088_b2128000.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipALTV",
+    "name": "ALTV",
+    "category": "ข่าว",
+    "logo": "https://cms.dmpcdn.com/livetv/2020/07/14/72c22620-c5aa-11ea-a8d3-2b56c8ce453d_original.png",
+    "src": "https://thaipbs-ujxrch.cdn.byteark.com/live/playlist.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipThaiPBSHD",
+    "name": "ThaiPBSHD",
+    "category": "ข่าว",
+    "logo": "https://cms.dmpcdn.com/livetv/2023/09/15/ab170410-5377-11ee-8e1b-194edbb69638_webp_original.webp",
+    "src": "https://freelive2.inwstream.com:1936/freelive-edge/dtv03_tpbshd/chunks.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipThaiPBS",
+    "name": "ThaiPBS",
+    "category": "ข่าว",
+    "logo": "https://cms.dmpcdn.com/livetv/2023/09/15/ab170410-5377-11ee-8e1b-194edbb69638_webp_original.webp",
+    "src": "https://freelive2.inwstream.com:1936/freelive-edge/dtv03_tpbshd/playlist.m3u8",
+    "type": "hls",
+    "badge": "สำรอง"
+  },
+  {
+    "id": "hls_ipTSport7",
+    "name": "TSport7",
+    "category": "ข่าว",
+    "logo": "https://cms.dmpcdn.com/livetv/2022/02/10/e00c0e00-8a3c-11ec-8f9e-831d2ccecc69_webp_original.webp",
+    "src": "https://lb1-live-mv.v2h-cdn.com/hls/ffef/tsport/tsport.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipTPTV",
+    "name": "TPTV",
+    "category": "ข่าว",
+    "logo": "https://cms.dmpcdn.com/livetv/2023/11/22/2a4de600-8919-11ee-8416-3dc6bea66698_webp_original.webp",
+    "src": "https://tv-live.tpchannel.org/live/tv_1080p.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipTNN16",
+    "name": "TNN16",
+    "category": "ข่าว",
+    "logo": "https://cms.dmpcdn.com/livetv/2023/10/02/75023d90-60f1-11ee-935a-5d4eba985103_webp_original.webp",
+    "src": "https://dolive.thaim3u.com/doodii-live/tnn24_1080p/playlist.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipJKN18",
+    "name": "JKN18",
+    "category": "ข่าว",
+    "logo": "https://cms.dmpcdn.com/livetv/2021/06/15/3e4e0540-cdb4-11eb-9a22-7958179a38a7_original.png",
+    "src": "https://lb1-live-mv.v2h-cdn.com/hls/ffda/jkn18/jkn18.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipJKN182",
+    "name": "JKN18",
+    "category": "ข่าว",
+    "logo": "https://cms.dmpcdn.com/livetv/2021/06/15/3e4e0540-cdb4-11eb-9a22-7958179a38a7_original.png",
+    "src": "https://keela2.com/stream/115/index.m3u8?token=mvFWafOIir5JDlQN",
+    "type": "hls",
+    "badge": "สำรอง"
+  },
+  {
+    "id": "hls_ipNationTV",
+    "name": "NationTV",
+    "category": "ข่าว",
+    "logo": "https://cms.dmpcdn.com/livetv/2023/09/09/9c6f59c0-4ebe-11ee-99a7-832609069236_webp_original.webp",
+    "src": "https://nationtv-1jdcjo.cdn.byteark.com/fleetstream/nationtvlive/1080p/index.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipWorkpoint",
+    "name": "Workpoint",
+    "category": "ข่าว",
+    "logo": "https://img5.pic.in.th/file/secure-sv1/wt1.webp",
+    "src": "https://lb1-live-mv.v2h-cdn.com/hls/ffcb/workpoint/workpoint.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipWorkpoint2",
+    "name": "Workpoint",
+    "category": "ข่าว",
+    "logo": "https://img5.pic.in.th/file/secure-sv1/wt1.webp",
+    "src": "https://keela2.com/stream/117/index.m3u8?token=mvFWafOIir5JDlQN",
+    "type": "hls",
+    "badge": "สำรอง"
+  },
+  {
+    "id": "hls_ipTrue24",
+    "name": "True24",
+    "category": "ข่าว",
+    "logo": "https://img5.pic.in.th/file/secure-sv1/true4u.webp",
+    "src": "https://freelive.inwstream.com:1936/freelive-edge/true4u/chunks.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipTrue242",
+    "name": "True24",
+    "category": "ข่าว",
+    "logo": "https://img5.pic.in.th/file/secure-sv1/true4u.webp",
+    "src": "https://lb1-live-mv.v2h-cdn.com/hls/ffca/true24/true24.m3u8",
+    "type": "hls",
+    "badge": "สำรอง"
+  },
+  {
+    "id": "hls_ipGmm25",
+    "name": "Gmm25",
+    "category": "ข่าว",
+    "logo": "https://cms.dmpcdn.com/livetv/2020/11/19/ed873d50-2a22-11eb-bed4-0972e345f90c_original.png",
+    "src": "https://lb1-live-mv.v2h-cdn.com/hls/ffbf/gmm25/gmm25.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipCH8",
+    "name": "CH8",
+    "category": "ข่าว",
+    "logo": "https://img5.pic.in.th/file/secure-sv1/ch8.webp",
+    "src": "https://freelive.inwstream.com:1936/freelive-edge/dtv27_ch8/chunks.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipCH82",
+    "name": "CH8",
+    "category": "ข่าว",
+    "logo": "https://img5.pic.in.th/file/secure-sv1/ch8.webp",
+    "src": "https://lb1-live-mv.v2h-cdn.com/hls/ffbe/ch8/ch8.m3u8",
+    "type": "hls",
+    "badge": "สำรอง"
+  },
+  {
+    "id": "hls_ipMono291",
+    "name": "Mono29TH",
+    "category": "ข่าว",
+    "logo": "https://cms.dmpcdn.com/livetv/2019/01/10/35a35017-8473-4953-8474-5c58d805b74a.png",
+    "src": "https://monomax-uiripn.cdn.byteark.com/plain/th/720p/index.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipMono292",
+    "name": "Mono29TH",
+    "category": "ข่าว",
+    "logo": "https://cms.dmpcdn.com/livetv/2019/01/10/35a35017-8473-4953-8474-5c58d805b74a.png",
+    "src": "https://monomax-uiripn.cdn.byteark.com/plain/th/playlist.m3u8",
+    "type": "hls",
+    "badge": "สำรอง"
+  },
+  {
+    "id": "hls_ipMono293",
+    "name": "Mono29 หนังSoundtrack",
+    "category": "ข่าว",
+    "logo": "https://i.postimg.cc/26dJcxGv/IMG-2741.png",
+    "src": "https://monomax-uiripn.cdn.byteark.com/plain/st/720p/index.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipMono294",
+    "name": "Mono29 หนังSoundtrack",
+    "category": "ข่าว",
+    "logo": "https://i.postimg.cc/26dJcxGv/IMG-2741.png",
+    "src": "https://monomax-uiripn.cdn.byteark.com/plain/st/playlist.m3u8",
+    "type": "hls",
+    "badge": "สำรอง"
+  },
+  {
+    "id": "hls_ipMCOTHD",
+    "name": "MCOTHD",
+    "category": "ข่าว",
+    "logo": "https://img5.pic.in.th/file/secure-sv1/mcot30.webp",
+    "src": "https://freelive.inwstream.com:1936/freelive-edge/dtv30_mcothd/chunks.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipMCOTHD2",
+    "name": "MCOTHD",
+    "category": "ข่าว",
+    "logo": "https://img5.pic.in.th/file/secure-sv1/mcot30.webp",
+    "src": "https://mcothd-streaming-edge-cdn.mcot.net/tencentmcot/smil:tencentmcot.smil/chunklist_w2118341630_b3000000.m3u8",
+    "type": "hls",
+    "badge": "สำรอง"
+  },
+  {
+    "id": "hls_ipONE31FHD",
+    "name": "ONE31FHD",
+    "category": "ข่าว",
+    "logo": "https://cms.dmpcdn.com/livetv/2019/01/16/396384be-35dc-4d11-bf04-06c9546ec7bc.png",
+    "src": "https://bcovlive-a.akamaihd.net/b6603a14ea59440a95e9235e14bc9332/ap-southeast-1/6415628290001/9c3d7fc7d10840a69e48b5939ae886e0/playlist_ssaiM.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipONE31",
+    "name": "ONE31",
+    "category": "ข่าว",
+    "logo": "https://cms.dmpcdn.com/livetv/2019/01/16/396384be-35dc-4d11-bf04-06c9546ec7bc.png",
+    "src": "https://lb1-live-mv.v2h-cdn.com/hls/ffba/one/one.m3u8",
+    "type": "hls",
+    "badge": "สำรอง"
+  },
+  {
+    "id": "hls_ipThairath",
+    "name": "Thairath",
+    "category": "ข่าว",
+    "logo": "https://img2.pic.in.th/pic/th1.jpg",
+    "src": "https://freelive.inwstream.com:1936/freelive-edge/dtv32_thairahttvhd/chunks.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipThairath2",
+    "name": "Thairath",
+    "category": "ข่าว",
+    "logo": "https://img2.pic.in.th/pic/th1.jpg",
+    "src": "https://lb1-live-mv.v2h-cdn.com/hls/ffaf/thairath/thairath.m3u8",
+    "type": "hls",
+    "badge": "สำรอง"
+  },
+  {
+    "id": "hls_ip5HD1",
+    "name": "5HD",
+    "category": "ข่าว",
+    "logo": "https://cms.dmpcdn.com/livetv/2023/07/18/7e060a10-2515-11ee-864f-a52221dad038_webp_original.webp",
+    "src": "https://639bc5877c5fe.streamlock.net/tv5hdlive/tv5hdlive/playlist.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ip5HD2",
+    "name": "5HD",
+    "category": "ข่าว",
+    "logo": "https://cms.dmpcdn.com/livetv/2023/07/18/7e060a10-2515-11ee-864f-a52221dad038_webp_original.webp",
+    "src": "https://lb1-live-mv.v2h-cdn.com/hls/fffb/5hd/5hd.m3u8",
+    "type": "hls",
+    "badge": "สำรอง"
+  },
+  {
+    "id": "hls_ip3HD",
+    "name": "3HD",
+    "category": "ข่าว",
+    "logo": "https://cms.dmpcdn.com/livetv/2023/07/24/5ff3e270-29cc-11ee-b2f4-e9de482d866e_webp_original.webp",
+    "src": "https://lb1-live-mv.v2h-cdn.com/hls/ffae/3hd/3hd.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ip3HD2",
+    "name": "3HD",
+    "category": "ข่าว",
+    "logo": "https://cms.dmpcdn.com/livetv/2023/07/24/5ff3e270-29cc-11ee-b2f4-e9de482d866e_webp_original.webp",
+    "src": "https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master_6660.m3u8",
+    "type": "hls",
+    "badge": "TEST"
+  },
+  {
+    "id": "hls_ipAmarin",
+    "name": "Amarin",
+    "category": "ข่าว",
+    "logo": "https://cms.dmpcdn.com/livetv/2024/07/23/5e86fbc0-48c0-11ef-9fca-d9696b8af2b7_webp_original.webp",
+    "src": "https://freelive2.inwstream.com:1936/freelive-edge/dtv33_ch3hd/chunks.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipAmarin2",
+    "name": "Amarin",
+    "category": "ข่าว",
+    "logo": "https://cms.dmpcdn.com/livetv/2024/07/23/5e86fbc0-48c0-11ef-9fca-d9696b8af2b7_webp_original.webp",
+    "src": "https://lb1-live-mv.v2h-cdn.com/hls/ffad/amarin/amarin.m3u8",
+    "type": "hls",
+    "badge": "สำรอง"
+  },
+  {
+    "id": "hls_ipCH7",
+    "name": "CH7",
+    "category": "ข่าว",
+    "logo": "https://cms.dmpcdn.com/livetv/2023/07/19/212d15e0-25e7-11ee-bfc1-85e95548413c_webp_original.webp",
+    "src": "https://lb1-live-mv.v2h-cdn.com/hls/ffac/7hd/7hd.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipCH7HD",
+    "name": "CH7HD",
+    "category": "ข่าว",
+    "logo": "https://cms.dmpcdn.com/livetv/2023/07/19/212d15e0-25e7-11ee-bfc1-85e95548413c_webp_original.webp",
+    "src": "https://keela2.com/stream/120/index.m3u8?token=mvFWafOIir5JDlQN",
+    "type": "hls",
+    "badge": "สำรอง"
+  },
+  {
+    "id": "hls_ipPPTV",
+    "name": "PPTV",
+    "category": "ข่าว",
+    "logo": "https://cms.dmpcdn.com/livetv/2024/06/26/48fb8a90-338b-11ef-a958-ed31043c43a3_webp_original.webp",
+    "src": "https://lb1-live-mv.v2h-cdn.com/hls/ffab/pptv/pptv.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipVIPA",
+    "name": "VIPA",
+    "category": "ข่าว",
+    "logo": "https://img.utdstc.com/icon/965/641/965641a9c5b372eac248b48aa0319bc04fad8c5ba556f885a0a79f3f61a5fb9b:200",
+    "src": "https://thaipbs-ophctt.cdn.byteark.com/0db95d655989436dbd571dcb8f70d98f/ap-southeast-1/6075037809001/profile_1/chunklist.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipWhiteChannel",
+    "name": "WhiteChannel",
+    "category": "ข่าว",
+    "logo": "https://cms.dmpcdn.com/livetv/2022/02/17/3943ca00-8fd6-11ec-b076-dffedf0eab22_webp_original.webp",
+    "src": "https://symc-cdn.violin.co.th/tndedge/whitechannel/playlist.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipTTD1",
+    "name": "TTD1",
+    "category": "ข่าว",
+    "logo": "https://img5.pic.in.th/file/secure-sv1/95_y_LE97J2C1QVIHgyeotdSD4vsMz3cnkK8b.png",
+    "src": "https://psiiptv-b.sky-cdn.com/ttd01-playlist/tracks-v1a1/mono.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipTTD2",
+    "name": "TTD2",
+    "category": "ข่าว",
+    "logo": "https://img2.pic.in.th/pic/97_y_sJ7ia3MDOZmf4NBYdqK1WHz68kAUPhLF.png",
+    "src": "https://psiiptv-b.sky-cdn.com/ttd02-playlist/tracks-v1a1/mono.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipTTD3",
+    "name": "TTD3",
+    "category": "ข่าว",
+    "logo": "https://img5.pic.in.th/file/secure-sv1/98_y_mjRlVn5dsWz1AI03SuKHTv96MOqetFXL.png",
+    "src": "https://psiiptv-b.sky-cdn.com/ttd03-playlist/tracks-v1a1/mono.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipTTD4",
+    "name": "TTD4",
+    "category": "ข่าว",
+    "logo": "https://img5.pic.in.th/file/secure-sv1/99_y_QlSGIfvmqV2rMe71xbT6naE4XOwB83Zy8e887693dda259ee.png",
+    "src": "https://psiiptv-b.sky-cdn.com/ttd04-Playlist/tracks-v1a1/mono.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipTTD5",
+    "name": "TTD5",
+    "category": "ข่าว",
+    "logo": "https://img2.pic.in.th/pic/100_y_Z7VxML6XkH0o9wrsIUzajC4Bfe8PEbqW.png",
+    "src": "https://psiiptv-b.sky-cdn.com/ttd05-playlist/tracks-v1a1/mono.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipTTD6",
+    "name": "TTD6",
+    "category": "ข่าว",
+    "logo": "https://img5.pic.in.th/file/secure-sv1/101_y_Nujyn9h71JtsVYo5KkAfGL3OeMZF4T6i.png",
+    "src": "https://psiiptv-b.sky-cdn.com/ttd06-playlist/tracks-v1a1/mono.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipTTD7",
+    "name": "TTD7",
+    "category": "ข่าว",
+    "logo": "https://img5.pic.in.th/file/secure-sv1/102_y_H9WxnVREmrDL72MFQ86Ycwkzhg3yGTBU.png",
+    "src": "https://psiiptv-b.sky-cdn.com/ttd07-playlist/tracks-v1a1/mono.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipTTD8",
+    "name": "TTD8",
+    "category": "ข่าว",
+    "logo": "https://img2.pic.in.th/pic/103_y_jm5ykb0fX7vZCTGAtcHdSz8LarVKiFJE.png",
+    "src": "https://psiiptv-b.sky-cdn.com/ttd08-playlist/tracks-v1a1/mono.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipTTD9",
+    "name": "TTD9",
+    "category": "ข่าว",
+    "logo": "https://img2.pic.in.th/pic/104_y_Jf2RiAdxLZINXazDvEMGr5Hg3YFCuQ7k.png",
+    "src": "https://psiiptv-b.sky-cdn.com/ttd09-playlist/tracks-v1a1/mono.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipTTD10",
+    "name": "TTD10",
+    "category": "ข่าว",
+    "logo": "https://media-mvtv.imgix.net/channel/95_y_LE97J2C1QVIHgyeotdSD4vsMz3cnkK8b.png",
+    "src": "https://psiiptv-b.sky-cdn.com/ttd10-playlist/tracks-v1a1/mono.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipTTD11",
+    "name": "TTD11",
+    "category": "ข่าว",
+    "logo": "https://media-mvtv.imgix.net/channel/95_y_LE97J2C1QVIHgyeotdSD4vsMz3cnkK8b.png",
+    "src": "https://psiiptv-b.sky-cdn.com/ttd11-playlist/tracks-v1a1/mono.m3u8",
+    "type": "hls"
+  },
+  {
+    "id": "hls_ipTTD12",
+    "name": "TTD12",
+    "category": "ข่าว",
+    "logo": "https://media-mvtv.imgix.net/channel/95_y_LE97J2C1QVIHgyeotdSD4vsMz3cnkK8b.png",
+    "src": "https://psiiptv-b.sky-cdn.com/ttd12-playlist/tracks-v1a1/mono.m3u8",
+    "type": "hls"
+  }
+]
