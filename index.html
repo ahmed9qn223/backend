@@ -1,49 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>FLOWTV</title>
-  
-  <link rel="icon"
-  href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%2300D1FF'/%3E%3Ctext x='50' y='64' text-anchor='middle' font-family='Arial, sans-serif' font-size='60' fill='white'%3ETV%3C/text%3E%3C/svg%3E">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TV Streaming</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="referrer" content="no-referrer">
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles.css" />
+  <!-- Optional: configure these in your own deployment -->
+  <script>
+    // Example: Cloudflare Worker proxy that accepts /p/<base64url-of-target>
+    // window.PROXY_BASE = "https://your-worker.workers.dev";
+    // Example: health checker JSON endpoint (Cloudflare Worker or static file)
+    // window.HEALTH_URL = "https://your-worker.workers.dev/health";
+    // Example: webhook to collect broken-channel reports
+    // window.REPORT_WEBHOOK = "https://example.com/report";
+  </script>
 
-  <!-- JW Player -->
-  <script src="https://ssl.p.jwpcdn.com/player/v/8.26.0/jwplayer.js"></script>
-
-  <!-- Optional: Proxy Worker -->
-  <!-- <script>window.PROXY_BASE = 'https://your-worker.workers.dev';</script> -->
-
-  <!-- App -->
-  <script defer src="app.js"></script>
+  <!-- Players (from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.10/dist/hls.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/shaka-player@4.9.3/dist/shaka-player.compiled.min.js"></script>
 </head>
 <body>
-  <header>
-    <div class="h-wrap">
-      <div id="clock" class="clock">--</div>
-      <div class="sub">อัปเดตอัตโนมัติ • เวลาเขตกรุงเทพฯ (UTC+7)</div>
+  <header class="app-header">
+    <h1>📺 TV Streaming</h1>
+    <div class="toolbar">
+      <label class="switch">
+        <input id="lowBandwidthToggle" type="checkbox">
+        <span>โหมดเน็ตช้า</span>
+      </label>
+      <button id="refreshListBtn" class="btn-minor">รีเฟรชรายการช่อง</button>
     </div>
   </header>
 
-  <main class="app">
-    <div id="player" aria-label="ตัวเล่นวิดีโอ"></div>
+  <main class="layout">
+    <section class="player-pane">
+      <div class="nowplaying">
+        <div class="now-title" id="nowTitle">ยังไม่ได้เลือกช่อง</div>
+        <div class="now-meta" id="nowMeta"></div>
+      </div>
+      <video id="player" playsInline controls></video>
+    </section>
 
-    <!-- Tabs (Filter) -->
-    <nav id="tabs" class="tabs" role="tablist" aria-label="กรองช่อง">
-      <button class="tab" role="tab" aria-selected="true"  data-filter="ทั้งหมด">ทั้งหมด</button>
-      <button class="tab" role="tab" aria-selected="false" data-filter="ข่าว">ข่าว</button>
-      <button class="tab" role="tab" aria-selected="false" data-filter="บันเทิง">บันเทิง</button>
-      <button class="tab" role="tab" aria-selected="false" data-filter="กีฬา">กีฬา</button>
-      <button class="tab" role="tab" aria-selected="false" data-filter="สารคดี">สารคดี</button>
-      <button class="tab" role="tab" aria-selected="false" data-filter="เพลง">เพลง</button>
-    </nav>
-
-    <!-- Grid -->
-    <section class="grid" id="channel-list" aria-live="polite"></section>
-    <div class="tip">แตะโลโก้ช่องเพื่อเล่น • บางอุปกรณ์อาจเริ่มแบบปิดเสียงก่อน</div>
+    <section class="list-pane">
+      <div id="categoriesBar" class="categories"></div>
+      <div id="grid" class="grid"></div>
+    </section>
   </main>
+
+  <!-- Toast container -->
+  <div id="toastStack" class="toast-container"></div>
+
+  <script src="app.js"></script>
 </body>
 </html>
