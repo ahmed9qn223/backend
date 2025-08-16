@@ -12,7 +12,7 @@
 const CH_URL  = 'channels.json';
 const CAT_URL = 'categories.json';
 const TIMEZONE = 'Asia/Bangkok';
-const CACHE_KEY = 'TV_DATA_CACHE_V2'; // bump to avoid old cached shape
+const CACHE_KEY = 'TV_DATA_CACHE_V4'; // bump to avoid old cached shape
 
 const SWITCH_OUT_MS   = 140;
 const STAGGER_STEP_MS = 22;
@@ -50,6 +50,25 @@ document.addEventListener('DOMContentLoaded', async () => {
 /* ------------------------ Load / Cache ------------------------ */
 
 async function loadData(){
+
+function pickFirstNonEmptyCategory(){
+  try{
+    const order = (categories?.order)||[];
+    const counts = {};
+    for(const cat of order){
+      counts[cat] = (Array.isArray(channels)?channels:[]).filter(c=>getCategory(c)===cat).length;
+    }
+    // if currentFilter is empty or no items, switch to first with items
+    const has = counts[currentFilter]||0;
+    if (!has){
+      for(const cat of order){
+        if (counts[cat]>0){ currentFilter = cat; break; }
+      }
+    }
+    console.log('[FLOWTV] counts by category:', counts, 'current:', currentFilter);
+  }catch(e){ console.warn('pickFirstNonEmptyCategory failed', e); }
+}
+
   const cacheKey = CACHE_KEY;
   try {
     const cache = JSON.parse(localStorage.getItem(cacheKey) || 'null');
@@ -244,6 +263,12 @@ function render(opt={withEnter:false}){
   const grid = ensureGrid(); grid.innerHTML='';
 
   const list = (Array.isArray(channels) ? channels : []).filter(c => getCategory(c) === currentFilter);
+  if (!list.length){
+    const cont = document.getElementById('cards');
+    if (cont){ cont.innerHTML = `<div style="padding:2rem;text-align:center;opacity:.8">ไม่พบช่องในหมวดนี้</div>`; }
+    highlightActiveTab();
+    return;
+  }
   const cols = computeGridCols(grid);
 
   list.forEach((ch,i)=>{
