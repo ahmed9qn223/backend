@@ -224,7 +224,7 @@ function render(opt={withEnter:false}){
     const btn = document.createElement('button');
     btn.className = 'channel';
     btn.dataset.category = getCategory(ch);
-    btn.dataset.globalIndex = String(channels.indexOf(ch));
+    btn.dataset.globalIndex = String(arrOf(channels).indexOf(ch));
     if (useWideLogo(ch)) btn.dataset.wide = 'true';
     btn.title = ch.name || 'ช่อง';
 
@@ -273,7 +273,7 @@ function computeGridCols(container){
 
 /* ------------------------ Player ------------------------ */
 function playByChannel(ch){
-  const i = channels.indexOf(ch);
+  const i = arrOf(channels).indexOf(ch);
   if (i >= 0) playByIndex(i);
 }
 function playByIndex(i, opt={scroll:true}){
