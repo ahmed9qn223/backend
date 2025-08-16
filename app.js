@@ -48,13 +48,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 /* ------------------------ Load / Cache ------------------------ */
 async function loadData(){
-  const cacheKey = 'TV_DATA_CACHE_V5';
+  const cacheKey = 'TV_DATA_CACHE_V1';
   try {
     const cache = JSON.parse(localStorage.getItem(cacheKey) || 'null');
     if (cache && Date.now() - cache.t < 12*60*60*1000) {
       categories = cache.cat;
-      const ch = cache.ch;
-      channels = Array.isArray(ch) ? ch : (Array.isArray(ch?.channels) ? ch.channels : (typeof ch==='object' ? Object.values(ch) : []));
+      channels   = cache.ch;
       return;
     }
   } catch {}
@@ -70,14 +69,13 @@ async function loadData(){
     rules: []
   };
 
-  // รองรับสคีมาเก่า (เป็น array) / ใหม่ ({channels:[]}) / แผนที่ object
-  channels = Array.isArray(chRes) ? chRes : (Array.isArray(chRes?.channels) ? chRes.channels : (typeof chRes==='object' ? Object.values(chRes) : []));
-  if (!Array.isArray(channels)) channels = [];
+  // รองรับสคีมาเก่า (เป็น array) / ใหม่ ({channels:[]})
+  channels = Array.isArray(chRes) ? chRes : (chRes.channels || []);
 
   // เติม id ถ้ายังไม่มี
   channels.forEach((c,i)=>{ if(!c.id) c.id = genIdFrom(c, i); });
 
-  localStorage.setItem('TV_DATA_CACHE_V5', JSON.stringify({t:Date.now(), cat:categories, ch:channels}));
+  localStorage.setItem('TV_DATA_CACHE_V1', JSON.stringify({t:Date.now(), cat:categories, ch:channels}));
 }
 
 /* ------------------------ Header: Clock & Now Playing ------------------------ */
@@ -214,8 +212,7 @@ function ensureGrid(){
 function render(opt={withEnter:false}){
   const grid = ensureGrid(); grid.innerHTML='';
 
-  const arr = Array.isArray(channels) ? channels : (Array.isArray(channels?.channels) ? channels.channels : (typeof channels==='object'?Object.values(channels):[]));
-  const list = arr.filter(c => getCategory(c) === currentFilter);
+  const list = channels.filter(c => getCategory(c) === currentFilter);
   const cols = computeGridCols(grid);
 
   list.forEach((ch,i)=>{
