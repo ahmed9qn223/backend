@@ -52,15 +52,62 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 /* ------------------------ Load / Cache ------------------------ */
+
 async function loadData(){
-  const cacheKey = 'TV_DATA_CACHE_V1';
-  try {
+  const cacheKey = 'TV_DATA_CACHE_V7F';
+  try{
     const cache = JSON.parse(localStorage.getItem(cacheKey) || 'null');
-    if (cache && Date.now() - cache.t < 12*60*60*1000) {
+    if (cache && Date.now() - cache.t < 12*60*60*1000){
       categories = cache.cat;
-      channels = arrOf(cache.ch);
+      channels   = arrOf(cache.ch);
       return;
     }
+  }catch{}
+
+  // 1) fetch categories.json
+  const cat = await fetch(CAT_URL, {cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null);
+  categories = cat || { order:['ข่าว','กีฬา','หนัง'], default:'ข่าว', rules:[] };
+
+  // 2) Decide which files to load
+  let files = [];
+  if (categories && categories.files && typeof categories.files === 'object'){
+    for (const [catName, path] of Object.entries(categories.files)){
+      if (typeof path === 'string' && path){
+        files.push({file:path, cat:catName, optional:true});
+      }
+    }
+  }
+  if (files.length === 0){
+    files.push({file: CH_URL, optional:false});
+  }
+
+  // 3) Fetch and merge
+  let all = [];
+  for (const f of files){
+    try{
+      const res = await fetch(f.file, {cache:'no-store'});
+      if (!res.ok){
+        if (f.optional){ console.warn('[FLOWTV] skip missing', f.file, res.status); continue; }
+        throw new Error('HTTP '+res.status);
+      }
+      const data = await res.json();
+      let arr = Array.isArray(data) ? data : (Array.isArray(data?.channels) ? data.channels : (typeof data==='object' ? Object.values(data) : []));
+      if (!Array.isArray(arr)) arr = [];
+      if (f.cat) arr = arr.map(x => (x.category ? x : Object.assign({category:f.cat}, x)));
+      all = all.concat(arr);
+    }catch(e){
+      if (!f.optional) console.error('[FLOWTV] load failed', f.file, e);
+    }
+  }
+  channels = Array.isArray(all) ? all : [];
+
+  // 4) Ensure id
+  channels.forEach((c,i)=>{ if(!c.id) c.id = genIdFrom(c,i); });
+
+  // 5) Cache
+  localStorage.setItem(cacheKey, JSON.stringify({t:Date.now(), cat:categories, ch:channels}));
+}
+
   } catch {}
 
   const [catRes, chRes] = await Promise.all([
