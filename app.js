@@ -12,6 +12,7 @@
 const CH_URL  = 'channels.json';
 const CAT_URL = 'categories.json';
 const TIMEZONE = 'Asia/Bangkok';
+const CACHE_KEY = 'TV_DATA_CACHE_V2'; // bump to avoid old cached shape
 
 const SWITCH_OUT_MS   = 140;
 const STAGGER_STEP_MS = 22;
@@ -40,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // เล่นช่องที่เคยเล่นครั้งล่าสุด (ถ้ามี)
   const lastId = safeGet('lastId');
-  if (lastId) {
+  if (lastId && Array.isArray(channels)) {
     const idx = channels.findIndex(c => c.id === lastId);
     if (idx >= 0) playByIndex(idx, {scroll:false});
   }
@@ -48,12 +49,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 /* ------------------------ Load / Cache ------------------------ */
 async function loadData(){
-  const cacheKey = 'TV_DATA_CACHE_V1';
+  const cacheKey = CACHE_KEY;
   try {
     const cache = JSON.parse(localStorage.getItem(cacheKey) || 'null');
     if (cache && Date.now() - cache.t < 12*60*60*1000) {
       categories = cache.cat;
-      channels   = cache.ch;
+      // tolerate old shapes: array or {channels:[]}
+      channels   = Array.isArray(cache.ch) ? cache.ch : (cache.ch?.channels || []);
+      if (!Array.isArray(channels)) throw new Error('bad cache shape');
       return;
     }
   } catch {}
@@ -71,11 +74,12 @@ async function loadData(){
 
   // รองรับสคีมาเก่า (เป็น array) / ใหม่ ({channels:[]})
   channels = Array.isArray(chRes) ? chRes : (chRes.channels || []);
+  if (!Array.isArray(channels)) channels = [];
 
   // เติม id ถ้ายังไม่มี
   channels.forEach((c,i)=>{ if(!c.id) c.id = genIdFrom(c, i); });
 
-  localStorage.setItem('TV_DATA_CACHE_V1', JSON.stringify({t:Date.now(), cat:categories, ch:channels}));
+  localStorage.setItem(CACHE_KEY, JSON.stringify({t:Date.now(), cat:categories, ch:channels}));
 }
 
 /* ------------------------ Header: Clock & Now Playing ------------------------ */
@@ -212,7 +216,7 @@ function ensureGrid(){
 function render(opt={withEnter:false}){
   const grid = ensureGrid(); grid.innerHTML='';
 
-  const list = channels.filter(c => getCategory(c) === currentFilter);
+  const list = (Array.isArray(channels) ? channels : []).filter(c => getCategory(c) === currentFilter);
   const cols = computeGridCols(grid);
 
   list.forEach((ch,i)=>{
