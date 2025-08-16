@@ -9,22 +9,25 @@
 
   <!-- Optional: configure these in your own deployment -->
   <script>
-    // Example: Cloudflare Worker proxy that accepts /p/<base64url-of-target>
     // window.PROXY_BASE = "https://your-worker.workers.dev";
-    // Example: health checker JSON endpoint (Cloudflare Worker or static file)
     // window.HEALTH_URL = "https://your-worker.workers.dev/health";
-    // Example: webhook to collect broken-channel reports
     // window.REPORT_WEBHOOK = "https://example.com/report";
   </script>
 
   <!-- Players (from CDN) -->
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.10/dist/hls.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/shaka-player@4.9.3/dist/shaka-player.compiled.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.10/dist/hls.min.js"></script>
 </head>
 <body>
   <header class="app-header">
-    <h1>📺 TV Streaming</h1>
-    <div class="toolbar">
+    <div class="brand">
+      <span class="logo">📺</span>
+      <span class="title">TV Streaming</span>
+    </div>
+    <div class="header-actions">
+      <div class="search">
+        <input id="q" type="search" placeholder="ค้นหาช่อง...">
+      </div>
       <label class="switch">
         <input id="lowBandwidthToggle" type="checkbox">
         <span>โหมดเน็ตช้า</span>
@@ -33,23 +36,35 @@
     </div>
   </header>
 
-  <main class="layout">
-    <section class="player-pane">
-      <div class="nowplaying">
-        <div class="now-title" id="nowTitle">ยังไม่ได้เลือกช่อง</div>
-        <div class="now-meta" id="nowMeta"></div>
-      </div>
+  <main class="main">
+    <section class="player-wrap" id="playerWrap">
       <video id="player" playsInline controls></video>
+      <div class="np">
+        <div class="np-title" id="nowTitle">ยังไม่ได้เลือกช่อง</div>
+        <div class="np-meta" id="nowMeta"></div>
+      </div>
     </section>
 
-    <section class="list-pane">
-      <div id="categoriesBar" class="categories"></div>
+    <section class="filters">
+      <div id="categoriesBar" class="categories" aria-label="รายชื่อหมวดหมู่"></div>
+    </section>
+
+    <section>
       <div id="grid" class="grid"></div>
+      <div id="emptyState" class="empty" hidden>
+        <div class="empty-emoji">🔎</div>
+        <div class="empty-title">ไม่พบผลลัพธ์</div>
+        <div class="empty-sub">ลองพิมพ์คำอื่น หรือเลือก "ทั้งหมด"</div>
+      </div>
     </section>
   </main>
 
   <!-- Toast container -->
   <div id="toastStack" class="toast-container"></div>
+
+  <footer class="app-footer">
+    <div>© Streaming UI</div>
+  </footer>
 
   <script src="app.js"></script>
 </body>
