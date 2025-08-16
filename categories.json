@@ -1,13 +1,9 @@
 {
-  "order": [
-    "ข่าว",
-    "กีฬา",
-    "หนัง"
-  ],
+  "order": ["ข่าว", "กีฬา", "หนัง"],
   "default": "ข่าว",
   "files": {
-    "ข่าว": "news.json",
-    "กีฬา": "sport.json",
-    "หนัง": "movie.json"
+    "ข่าว": "channels/news.json",
+    "กีฬา": "channels/sport.json",
+    "หนัง": "channels/movie.json"
   }
 }
