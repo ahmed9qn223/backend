@@ -1,13 +1,10 @@
 {
   "order": [
     "ข่าว",
-    "บันเทิง",
     "กีฬา",
-    "สารคดี",
-    "เพลง",
     "หนัง"
   ],
-  "default": "บันเทิง",
+  "default": "ข่าว",
   "rules": [
     {
       "category": "หนัง",
@@ -65,10 +62,7 @@
   ],
   "files": {
     "ข่าว": "channels/news.json",
-    "บันเทิง": "channels/entertain.json",
     "กีฬา": "channels/sport.json",
-    "สารคดี": "channels/doc.json",
-    "เพลง": "channels/music.json",
     "หนัง": "channels/movie.json"
   }
 }
