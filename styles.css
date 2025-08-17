@@ -1,0 +1,166 @@
+/* ===================== styles.css (final) ===================== */
+:root{
+  --bg:#0c0c0d; --panel:#141516; --panel-2:#101112; --text:#f2f2f2;
+  --muted:#a0a7b0; --border:#242628; --maxw:1200px;
+  --tile-min:120px; --tile-h:150px; --tile-g:12px;
+}
+
+/* Base / Reset */
+*{box-sizing:border-box}
+html,body{height:100%}
+html,body{background:var(--bg)!important;color:var(--text)}
+body{
+  margin:0; display:flex; flex-direction:column; overflow-x:hidden; scroll-behavior:smooth;
+  font-family:ui-sans-serif,system-ui,-apple-system,"Sarabun",Arial,"Segoe UI",Tahoma;
+}
+button.tab,button.channel{
+  appearance:none !important; -webkit-appearance:none !important;
+  background:transparent !important; border:0 !important; outline:0;
+  padding:0 !important; margin:0 !important; display:block; line-height:1 !important;
+  box-shadow:none !important; color:inherit;
+}
+button.tab:focus,button.channel:focus{outline:none}
+
+/* Header */
+header{
+  position:sticky; top:0; z-index:20;
+  border-bottom:1px solid var(--border);
+  background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,0));
+  backdrop-filter: blur(6px);
+}
+.h-wrap{
+  position:relative;
+  width:min(100%,var(--maxw));
+  margin:auto; padding:10px 14px;
+  display:grid; justify-items:center; gap:4px;
+}
+.clock{font-weight:700;font-size:clamp(15px,2.3vw,19px);letter-spacing:.2px;text-align:center}
+.sub{display:none!important}
+.now-playing{
+  margin-top:2px;font-size:clamp(13px,2vw,16px);font-weight:600;color:var(--text);
+  text-align:center;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;opacity:.92
+}
+.now-playing.swap{animation:npFade .24s ease both}
+@keyframes npFade{from{opacity:0;transform:translateY(4px)}to{opacity:.92;transform:none}}
+
+/* === Histats: ด้านขวาบนภายใน header (ย่อบนมือถือ) === */
+#histats_counter{
+  position:absolute; top:4px; right:4px; z-index:30;
+  line-height:0; pointer-events:auto;
+  transform:scale(.82);                 /* desktop */
+  transform-origin:top right;
+}
+#histats_counter #histatsC{ position:static !important }
+#histats_counter img{ opacity:.9; filter:drop-shadow(0 1px 2px rgba(0,0,0,.45)) }
+@media (max-width: 640px){ #histats_counter{ transform:scale(.72); top:4px; right:4px; } }
+@media (max-width: 480px){ #histats_counter{ transform:scale(.64); top:3px; right:3px; } }
+@media (max-width: 390px){ #histats_counter{ transform:scale(.58); top:2px; right:2px; } }
+@media (max-width: 340px){ #histats_counter{ transform:scale(.52); top:2px; right:2px; } }
+
+/* App / Player */
+.app{width:min(100%,var(--maxw));margin:auto;padding:10px 14px;flex:1 0 auto}
+#player{width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden}
+
+/* ---- Glass Tabs ---- */
+.tabs{
+  position:relative;display:flex;gap:10px;align-items:center;overflow-x:auto;-webkit-overflow-scrolling:touch;
+  padding:12px 10px;margin:10px 0 8px;scrollbar-gutter:stable both-edges;justify-content:flex-start;
+  scroll-snap-type:x proximity;z-index:0;transform:translateZ(0);backface-visibility:hidden;
+}
+.tabs::-webkit-scrollbar{height:6px}
+.tabs::-webkit-scrollbar-thumb{background:#2b2d30;border-radius:8px}
+.tabs.tabs--center{justify-content:center}
+.tabs::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(120% 80% at 10% 0%, rgba(99,102,241,.22) 0%, transparent 45%),
+    radial-gradient(120% 80% at 90% 100%, rgba(168,85,247,.22) 0%, transparent 45%),
+    linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.0));
+  filter:blur(20px);opacity:.8;pointer-events:none;z-index:-1;
+}
+.tab{position:relative;flex:0 0 auto;cursor:pointer;scroll-snap-align:center;contain:paint;-webkit-tap-highlight-color:transparent}
+.tab-card{
+  width:clamp(82px,13.5vw,98px);height:clamp(70px,12vw,86px);border-radius:12px;
+  display:grid;grid-template-rows:auto auto;justify-items:center;align-content:center;gap:6px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 1px 0 rgba(255,255,255,.06) inset, 0 6px 14px rgba(0,0,0,.22);
+  color:#fff;transform:translateZ(0) scale(1);backface-visibility:hidden;will-change:transform;transition:transform .16s ease;
+}
+.tab:hover .tab-card{transform:translateZ(0) scale(1.015)}
+.tab:active .tab-card{transform:scale(.985)}
+.tab:focus-visible .tab-card{box-shadow:0 0 0 2px rgba(255,255,255,.85),0 10px 20px rgba(0,0,0,.30)}
+.tab[aria-selected="true"] .tab-card{transform:scale(1.03)}
+.tab-icon svg{width:24px;height:24px;display:block;color:#fff}
+.tab-label{font-weight:700;font-size:11.5px;letter-spacing:.2px}
+.tab{--accent:#ffffff}
+.tab::after{
+  content:"";position:absolute;left:50%;bottom:-2px;width:56%;height:3px;border-radius:3px;background:var(--accent);
+  box-shadow:0 2px 10px color-mix(in srgb, var(--accent) 60%, transparent);
+  transform:translate3d(-50%,0,0) scaleX(0);transform-origin:center;opacity:0;will-change:transform,opacity;
+  transition:transform .22s ease,opacity .22s ease;
+}
+.tab[aria-selected="true"]::after{transform:translate3d(-50%,0,0) scaleX(1);opacity:1}
+.tab[data-filter="ทั้งหมด"]{--accent:#60a5fa}
+.tab[data-filter="ข่าว"]{--accent:#ef4444}
+.tab[data-filter="บันเทิง"]{--accent:#f59e0b}
+.tab[data-filter="กีฬา"]{--accent:#22c55e}
+.tab[data-filter="สารคดี"]{--accent:#06b6d4}
+.tab[data-filter="เพลง"]{--accent:#a855f7}
+
+/* ---- Channel Grid (uniform) ---- */
+.grid{
+  margin-top:10px;display:grid;gap:var(--tile-g);
+  grid-template-columns:repeat(auto-fit,minmax(var(--tile-min),1fr));
+  align-items:start;
+}
+.grid.fade-in{animation:gridFade .24s ease both}
+@keyframes gridFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+.channel{position:relative;border-radius:16px;cursor:pointer}
+.channel::after{
+  content:"";position:absolute;inset:-6px;border-radius:20px;
+  background:radial-gradient(60% 60% at 50% 50%, rgba(255,255,255,.55) 0%, transparent 70%);
+  filter:blur(14px);opacity:0;transition:opacity .25s ease;pointer-events:none;z-index:0;
+}
+.channel:hover::after,.channel.active::after{opacity:.9;animation:neonPulse 2.4s ease-in-out infinite}
+@keyframes neonPulse{0%{filter:blur(10px);opacity:.55}50%{filter:blur(15px);opacity:.95}100%{filter:blur(10px);opacity:.55}}
+
+.ch-card{
+  position:relative;z-index:1;height:var(--tile-h)!important;
+  background:linear-gradient(180deg,var(--panel),var(--panel-2))!important;border:1px solid var(--border)!important;
+  border-radius:14px;padding:12px 10px 10px;box-shadow:0 8px 20px rgba(0,0,0,.18);
+  display:grid;grid-template-rows:1fr auto;gap:10px;place-items:center;
+  transition:transform .12s ease,border-color .15s ease,box-shadow .15s ease;overflow:hidden;
+}
+.channel:hover .ch-card{
+  transform:translateY(-1px);border-color:rgba(255,255,255,.7);
+  box-shadow:0 0 0 1px rgba(255,255,255,.75) inset, 0 0 12px rgba(255,255,255,.45), 0 0 26px rgba(255,255,255,.25);
+}
+.channel:active .ch-card{transform:scale(.985)}
+.channel.active .ch-card{border-color:#fff;box-shadow:0 0 0 1.5px #fff inset, 0 0 16px rgba(255,255,255,.6), 0 0 32px rgba(255,255,255,.35)}
+
+.logo-wrap{
+  width:calc(var(--tile-h)*0.52);height:calc(var(--tile-h)*0.52);border-radius:12px;
+  background:#0e0f10;display:grid;place-items:center;overflow:hidden;
+}
+.logo{max-width:calc(var(--tile-h)*0.44);max-height:calc(var(--tile-h)*0.44)}
+.name{
+  font-size:12.5px;text-align:center;color:#e7e7e7;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  overflow:hidden;text-overflow:ellipsis;line-height:1.25;min-height:2.5em;
+}
+
+/* Ripple */
+.ripple{position:absolute;border-radius:50%;pointer-events:none;transform:scale(0);opacity:.35;background:#fff;animation:ripple .55s ease-out;mix-blend-mode:overlay}
+@keyframes ripple{to{transform:scale(8);opacity:0}}
+
+/* Reduce motion */
+@media (prefers-reduced-motion:reduce){
+  .tab-card{transition:none}
+  .tab:hover .tab-card,.tab[aria-selected="true"] .tab-card{transform:none}
+  .grid.fade-in{animation:none}
+}
+
+/* Responsive */
+@media (max-width:900px){:root{--tile-min:108px;--tile-h:140px}}
+@media (max-width:520px){:root{--tile-min:100px;--tile-h:130px}.name{font-size:12px}}
