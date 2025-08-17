@@ -100,12 +100,13 @@ header{
   transition:transform .22s ease,opacity .22s ease;
 }
 .tab[aria-selected="true"]::after{transform:translate3d(-50%,0,0) scaleX(1);opacity:1}
-.tab[data-filter="ทั้งหมด"]{--accent:#60a5fa}
-.tab[data-filter="ข่าว"]{--accent:#ef4444}
+/* เปลี่ยนข่าว→IPTV และเพิ่มเด็ก; ลบทั้งหมด */
+.tab[data-filter="IPTV"]{--accent:#ef4444}
 .tab[data-filter="บันเทิง"]{--accent:#f59e0b}
 .tab[data-filter="กีฬา"]{--accent:#22c55e}
 .tab[data-filter="สารคดี"]{--accent:#06b6d4}
 .tab[data-filter="เพลง"]{--accent:#a855f7}
+.tab[data-filter="เด็ก"]{--accent:#60a5fa}
 
 /* ---- Channel Grid (uniform) ---- */
 .grid{
