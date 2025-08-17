@@ -1,282 +1,278 @@
-/* FLOWTV – slim, smooth, cache-friendly
- * - ลบ Sub/Tip ออกจากการพึ่งพาใน JS
- * - เรนเดอร์แท็บ/รายการช่องแบบไหลลื่น
- * - รองรับ HLS/DASH และ ClearKey (ถ้ามีใน channels.json)
- * - เซฟช่องล่าสุด, เลื่อนเข้ากลางจอ, lazy-load รูป
+/* FLOWTV – Tabs + Grid + Player
+ * - เปลี่ยนหมวด "ข่าว" -> "IPTV"
+ * - เพิ่มหมวด "เด็ก"
+ * - สร้างแท็บอัตโนมัติ + ค้นหา + เล่น HLS/DASH
  */
-(() => {
-  const TIMEZONE = 'Asia/Bangkok';
-  const CHANNELS_URL = 'channels.json';
-  const PLAYER_CONTAINER_ID = 'player';
 
-  let channels = [];
-  let activeCategory = 'ทั้งหมด';
-  let filteredIdx = [];
-  let player;
+const TABS = ['ทั้งหมด', 'IPTV', 'เด็ก', 'บันเทิง', 'กีฬา', 'สารคดี', 'เพลง', 'หนัง'];
+const tabsEl = document.getElementById('tabs');
+const gridEl = document.getElementById('grid');
+const qEl = document.getElementById('q');
 
-  // ---------- Utils ----------
-  const $ = (sel, root = document) => root.querySelector(sel);
-  const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
-  const debounce = (fn, ms = 150) => {
-    let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); };
-  };
-  const proxify = (url) => {
-    const base = (window.PROXY_BASE || '').trim();
-    if (!base) return url;
-    // encodeURIComponent ทั้ง URL ปลายทาง
-    return `${base.replace(/\/+$/,'')}/p/${btoa(url)}`;
-  };
-  const isDash = (src, type) => type?.toLowerCase() === 'dash' || /\.mpd(\?|$)/i.test(src);
-  const isHls  = (src, type) => type?.toLowerCase() === 'hls'  || /\.m3u8(\?|$)/i.test(src);
+const modal = document.getElementById('playerModal');
+const modalTitle = document.getElementById('playerTitle');
+const metaEl = document.getElementById('meta');
+const videoEl = document.getElementById('player');
 
-  // ---------- Clock + Now Playing ----------
-  function mountClockAndNow() {
-    const clockEl = $('#clock');
-    if (clockEl) {
-      const tick = () => {
-        const now = new Date();
-        clockEl.textContent = new Intl.DateTimeFormat('th-TH', {
-          day:'2-digit', month:'short', year:'numeric',
-          hour:'2-digit', minute:'2-digit', second:'2-digit',
-          hour12:false, timeZone: TIMEZONE
-        }).format(now).replace(',', '');
-      };
-      tick(); setInterval(tick, 1000);
-    }
-    // แนบ Now Playing แทน Sub เดิม
-    if (clockEl && !$('#now-playing')) {
-      const el = document.createElement('div');
-      el.id = 'now-playing';
-      el.className = 'now-playing';
-      el.setAttribute('aria-live', 'polite');
-      clockEl.after(el);
-    }
+let channels = [];
+let activeFilter = 'ทั้งหมด';
+let hlsInstance = null;
+let dashInstance = null;
+
+const isStr = v => typeof v === 'string';
+const byStr = v => (v || '').toString();
+
+/* -------- Category helpers -------- */
+function getIconSVG(n){
+  const s='currentColor', w=2;
+  switch(n){
+    case 'IPTV': 
+      return `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="3" y="7" width="18" height="12" rx="2" stroke="${s}" stroke-width="${w}"/>
+        <path d="M8 4l4 3 4-3" stroke="${s}" stroke-width="${w}" stroke-linecap="round"/>
+      </svg>`;
+    case 'เด็ก':
+      return `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" stroke="${s}" stroke-width="${w}"/>
+        <path d="M8.5 10.5h.01M15.5 10.5h.01" stroke="${s}" stroke-width="${w}" stroke-linecap="round"/>
+        <path d="M8.5 14c1 .9 2.2 1.4 3.5 1.4S14.5 14.9 15.5 14" stroke="${s}" stroke-width="${w}" stroke-linecap="round"/>
+      </svg>`;
+    case 'บันเทิง': return `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4l2.7 5.5 6 .9-4.4 4.3 1 6-5.3-2.8-5.3 2.8 1-6L3.3 10.4l6-.9L12 4z" stroke="${s}" stroke-width="${w}" stroke-linejoin="round"/></svg>`;
+    case 'กีฬา': return `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="${s}" stroke-width="${w}"/><path d="M3 12h18" stroke="${s}" stroke-width="${w}" stroke-linecap="round"/><path d="M12 3a9 9 0 0 1 0 18" stroke="${s}" stroke-width="${w}" stroke-linecap="round"/><path d="M12 3a9 9 0 0 0 0 18" stroke="${s}" stroke-width="${w}" stroke-linecap="round"/></svg>`;
+    case 'สารคดี': return `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h7a3 3 0 0 1 3 3v11H7a3 3 0 0 0-3 3V6z" stroke="${s}" stroke-width="${w}" stroke-linejoin="round"/><path d="M13 6h7a3 3 0 0 1 3 3v11h-7a3 3 0 0 0-3 3V6z" stroke="${s}" stroke-width="${w}" stroke-linejoin="round"/></svg>`;
+    case 'เพลง':   return `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 4v9.5a2.5 2.5 0 1 1-2-2.45V8l-4 1v7a2 2 0 1 1-2-2V8.5l8-2.5Z" fill="${s}"/></svg>`;
+    case 'หนัง':   return `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2" stroke="${s}" stroke-width="${w}"/><path d="M7 6v12M17 6v12" stroke="${s}" stroke-width="${w}" stroke-linecap="round"/></svg>`;
+    case 'ทั้งหมด':
+      return `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" stroke="${s}" stroke-width="${w}"/><path d="M7 7h10v10H7z" stroke="${s}" stroke-width="${w}" opacity=".5"/></svg>`;
+    default:
+      return `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" stroke="${s}" stroke-width="${w}"/></svg>`;
   }
-  function setNowPlaying(name = '') {
-    const el = $('#now-playing'); if (!el) return;
-    el.textContent = name || '';
-    el.title = name || '';
-    el.classList.remove('swap'); void el.offsetWidth; el.classList.add('swap');
-  }
+}
 
-  // ---------- Tabs ----------
-  function buildTabs(categories) {
-    const nav = $('#tabs');
-    nav.innerHTML = '';
-    const makeBtn = (label) => {
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'tab';
-      b.textContent = label;
-      b.dataset.cat = label;
-      if (label === activeCategory) b.classList.add('active');
-      b.addEventListener('click', () => {
-        setActiveCategory(label);
-      });
-      return b;
-    };
+function guessCategory(ch){
+  const s = `${byStr(ch.name)} ${byStr(ch.logo)}`.toLowerCase();
+  const src = byStr(ch.src || ch.file).toLowerCase();
 
-    // ให้มี "ทั้งหมด" ไว้ตัวแรกเสมอ
-    const uniq = ['ทั้งหมด', ...[...new Set(categories)].filter(c => c && c !== 'ทั้งหมด')];
-    uniq.forEach(c => nav.appendChild(makeBtn(c)));
+  // หนัง
+  if (/(^|\s)(hbo|cinemax|mono\s?29\s?plus|mono29plus|movie|movies|film|true\s?film|signature|hits|family)(\s|$)/.test(s)) return 'หนัง';
+  if (/(\/101\/|\/103\/|\/104\/|\/105\/|\/106\/|\/107\/|\/109\/)/.test(src)) return 'หนัง';
 
-    // เลื่อนแท็บให้อยู่กลางเมื่อเปลี่ยน
-    const centerTabs = () => {
-      const active = $('.tab.active', nav);
-      if (!active) return;
-      const left = active.offsetLeft - (nav.clientWidth - active.clientWidth) / 2;
-      nav.scrollTo({ left, behavior: 'smooth' });
-    };
-    centerTabs();
-    addEventListener('resize', debounce(centerTabs, 150));
-  }
-  function setActiveCategory(cat) {
-    activeCategory = cat;
-    $$('.tab').forEach(t => t.classList.toggle('active', t.dataset.cat === cat));
-    renderGrid();
-  }
+  // IPTV (เดิม "ข่าว")
+  if (/(ข่าว|tnn|nation|thairath|nbt|pbs|jkn|workpoint\s?news)/.test(s)) return 'IPTV';
 
-  // ---------- Grid ----------
-  let logoObserver;
-  function ensureLogoObserver() {
-    if (logoObserver) return;
-    logoObserver = new IntersectionObserver((entries) => {
-      for (const e of entries) {
-        if (e.isIntersecting) {
-          const img = e.target;
-          if (img.dataset.src && !img.src) img.src = img.dataset.src;
-          logoObserver.unobserve(img);
-        }
+  // เด็ก
+  if (/(kid|เด็ก|cartoon|toon|junior|nick|animax|dreamworks|pbskids|zoo\s?moo|boomerang|baby|disney)/.test(s)) return 'เด็ก';
+
+  // กีฬา / สารคดี / เพลง
+  if (/(sport|กีฬา|t\s?sports|bein|true\s?sport|pptv\s?hd\s?36)/.test(s)) return 'กีฬา';
+  if (/(สารคดี|discovery|animal|nat.?geo|history|documentary|bbc\s?earth)/.test(s)) return 'สารคดี';
+  if (/(เพลง|music|mtv|channel\s?v|music\s?hits)/.test(s)) return 'เพลง';
+
+  return 'บันเทิง';
+}
+
+/* -------- Data loading -------- */
+function flattenOne(arr){
+  // flatten 1 ชั้น เฉพาะตัวที่เป็น array
+  if (!Array.isArray(arr)) return arr;
+  if (!arr.some(Array.isArray)) return arr;
+  return arr.reduce((acc, item) => acc.concat(item), []);
+}
+
+async function loadChannels(){
+  const res = await fetch('channels.json', {cache:'no-store'});
+  const data = await res.json();
+
+  let list = Array.isArray(data) ? data : (data.channels || []);
+  list = flattenOne(list);
+
+  // sanitize & normalize
+  channels = list
+    .filter(x => x && typeof x === 'object')
+    .map((ch, idx) => {
+      const src = byStr(ch.src || ch.file || ch.url);
+      const name = byStr(ch.name || `ช่อง #${idx+1}`);
+      const logo = byStr(ch.logo || '');
+      let category = byStr(ch.category).trim();
+      if (!category) category = guessCategory({name, logo, src});
+
+      // type: ถ้าไม่ระบุ ให้เดาจาก url
+      let type = byStr(ch.type).toLowerCase();
+      if (!type){
+        if (/\.m3u8($|\?)/.test(src)) type = 'hls';
+        else if (/\.mpd($|\?)/.test(src)) type = 'dash';
+        else type = 'auto';
       }
-    }, { rootMargin: '300px 0px' });
-  }
-  function renderGrid() {
-    const wrap = $('#channel-list');
-    wrap.innerHTML = '';
-
-    const list = channels.map((ch, i) => ({ ch, i }))
-      .filter(({ ch }) => (activeCategory === 'ทั้งหมด' ? true : (ch.category || 'อื่นๆ') === activeCategory));
-
-    filteredIdx = list.map(x => x.i);
-
-    const frag = document.createDocumentFragment();
-    ensureLogoObserver();
-
-    list.forEach(({ ch, i }) => {
-      const card = document.createElement('article');
-      card.className = 'channel';
-      card.tabIndex = 0;
-      card.setAttribute('role', 'button');
-      card.dataset.index = i;
-
-      card.innerHTML = `
-        <div class="thumb">
-          <img class="logo" alt="${escapeHtml(ch.name || '')}" loading="lazy" decoding="async" />
-        </div>
-        <div class="meta">
-          <div class="name ellipsis" title="${escapeHtml(ch.name || '')}">${escapeHtml(ch.name || '')}</div>
-          <div class="tags">
-            ${badge(ch.category || 'ทั่วไป')}
-            ${badge(isDash(ch.src, ch.type) ? 'DASH' : (isHls(ch.src, ch.type) ? 'HLS' : 'AUTO'))}
-          </div>
-        </div>
-      `;
-
-      const img = $('.logo', card);
-      img.dataset.src = (ch.logo || '').trim();
-      if (img.dataset.src) logoObserver.observe(img);
-
-      card.addEventListener('click', () => play(i));
-      card.addEventListener('keydown', (ev) => {
-        if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); play(i); }
-      });
-
-      frag.appendChild(card);
+      return { ...ch, name, logo, src, category, type };
     });
 
-    wrap.appendChild(frag);
-  }
-  function badge(text) {
-    return `<span class="badge">${escapeHtml(text)}</span>`;
-  }
-  function escapeHtml(s='') {
-    return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-  }
+  buildTabs();
+  render();
+}
 
-  // ---------- Player ----------
-  function setupPlayerIfNeeded() {
-    if (player) return player;
-    if (!window.jwplayer) {
-      const holder = document.createElement('div');
-      holder.style.color = '#fff'; holder.style.padding = '16px';
-      holder.textContent = 'JW Player ไม่พร้อมใช้งาน';
-      $(PLAYER_CONTAINER_ID.startsWith('#')?PLAYER_CONTAINER_ID:'#'+PLAYER_CONTAINER_ID)?.appendChild(holder);
-      return null;
-    }
-    player = jwplayer(PLAYER_CONTAINER_ID);
-    return player;
-  }
+/* -------- UI: Tabs -------- */
+function buildTabs(){
+  tabsEl.innerHTML = '';
+  const categoriesInData = new Set(channels.map(c => c.category));
 
-  function play(index, opts = { scroll: true }) {
-    index = Math.max(0, Math.min(channels.length - 1, index));
-    const ch = channels[index] || {};
-    const file = proxify(ch.src || '');
-    if (!file) return;
-
-    const cfg = {
-      autostart: true,
-      preload: 'auto',
-      width: '100%',
-      aspectratio: '16:9',
-      playbackRateControls: true,
-      controls: true,
-      // ให้แหล่งเดียวแบบเจาะชนิด เพื่อหลีกเลี่ยงสลับผิด
-      sources: [{
-        file,
-        type: isDash(ch.src, ch.type) ? 'dash' : (isHls(ch.src, ch.type) ? 'hls' : undefined)
-      }]
-    };
-
-    // DRM — ClearKey (ถ้ามี)
-    if (ch.drm?.clearkey?.key && ch.drm?.clearkey?.keyId) {
-      cfg.drm = { clearkey: { keyId: ch.drm.clearkey.keyId, key: ch.drm.clearkey.key } };
-    }
-
-    const p = setupPlayerIfNeeded();
-    if (!p) return;
-
-    p.setup(cfg);
-
-    // UI state
-    setNowPlaying(ch.name || '');
-    localStorage.setItem('lastIndex', String(index));
-
-    highlightActiveCard(index);
-    if (opts.scroll !== false) scrollCardIntoView(index);
-
-    // กันกรณีเล่นล้มเหลว
-    p.on('error', e => {
-      console.error('JW Error:', e);
-      setNowPlaying((ch.name || '') + ' • เล่นไม่สำเร็จ');
+  TABS.forEach(cat => {
+    if (cat !== 'ทั้งหมด' && !categoriesInData.has(cat)) return;
+    const btn = document.createElement('button');
+    btn.className = 'tab';
+    btn.type = 'button';
+    btn.role = 'tab';
+    btn.dataset.filter = cat;
+    btn.setAttribute('aria-selected', cat === activeFilter ? 'true' : 'false');
+    btn.innerHTML = `${getIconSVG(cat)}<span>${cat}</span>`;
+    btn.addEventListener('click', () => {
+      activeFilter = cat;
+      document.querySelectorAll('.tab[role="tab"]').forEach(t => t.setAttribute('aria-selected','false'));
+      btn.setAttribute('aria-selected','true');
+      render();
     });
-  }
+    tabsEl.appendChild(btn);
+  });
+}
 
-  function highlightActiveCard(index) {
-    $$('.channel').forEach(el => el.classList.remove('active'));
-    const el = $(`.channel[data-index="${index}"]`);
-    if (el) el.classList.add('active');
-  }
-  function scrollCardIntoView(index) {
-    const el = $(`.channel[data-index="${index}"]`);
-    if (!el) return;
-    el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
-  }
+/* -------- UI: Cards -------- */
+function render(){
+  const q = byStr(qEl.value).trim().toLowerCase();
+  gridEl.innerHTML = '';
 
-  // ---------- Keyboard next/prev ----------
-  addEventListener('keydown', (e) => {
-    if (!channels.length) return;
-    if (['ArrowRight','ArrowDown','PageDown'].includes(e.key)) {
-      e.preventDefault();
-      const cur = parseInt(localStorage.getItem('lastIndex') || '0', 10);
-      const pool = filteredIdx.length ? filteredIdx : channels.map((_,i)=>i);
-      const pos = Math.max(0, pool.indexOf(cur));
-      const next = pool[(pos + 1) % pool.length];
-      play(next);
-    } else if (['ArrowLeft','ArrowUp','PageUp'].includes(e.key)) {
-      e.preventDefault();
-      const cur = parseInt(localStorage.getItem('lastIndex') || '0', 10);
-      const pool = filteredIdx.length ? filteredIdx : channels.map((_,i)=>i);
-      const pos = Math.max(0, pool.indexOf(cur));
-      const prev = pool[(pos - 1 + pool.length) % pool.length];
-      play(prev);
-    }
+  const visible = channels.filter(ch => {
+    const inFilter = (activeFilter === 'ทั้งหมด') ? true : (ch.category === activeFilter);
+    if (!inFilter) return false;
+    if (!q) return true;
+    const hay = `${ch.name} ${ch.category} ${ch.logo} ${ch.src}`.toLowerCase();
+    return hay.includes(q);
   });
 
-  // ---------- Init ----------
-  function init() {
-    mountClockAndNow();
-
-    fetch(CHANNELS_URL)              // ให้เบราว์เซอร์จัดการแคช (ลื่นกว่า no-store)
-      .then(r => r.json())
-      .then(data => {
-        channels = Array.isArray(data) ? data : (data.channels || []);
-        const categories = channels.map(c => c.category || 'ทั่วไป');
-        buildTabs(categories);
-
-        renderGrid();
-
-        // เริ่มเล่นจากช่องล่าสุด (ถ้ามี)
-        let start = parseInt(localStorage.getItem('lastIndex') || '0', 10);
-        if (!(start >= 0 && start < channels.length)) start = 0;
-        if (channels.length) play(start, { scroll: false });
-      })
-      .catch(err => {
-        console.error('โหลด channels.json ไม่สำเร็จ:', err);
-        const grid = $('#channel-list');
-        if (grid) grid.innerHTML = `<div class="empty">โหลดรายการช่องไม่สำเร็จ</div>`;
-      });
+  if (visible.length === 0){
+    const empty = document.createElement('p');
+    empty.className = 'card__meta';
+    empty.style.padding = '14px';
+    empty.textContent = 'ไม่พบช่องตามที่กรอง';
+    gridEl.appendChild(empty);
+    return;
   }
 
-  // เริ่ม!
-  addEventListener('DOMContentLoaded', init);
-})();
+  for (const ch of visible){
+    const card = document.createElement('article');
+    card.className = 'card';
+    card.dataset.category = ch.category;
+
+    const thumb = document.createElement('div');
+    thumb.className = 'card__thumb';
+    thumb.innerHTML = ch.logo
+      ? `<img src="${ch.logo}" alt="${escapeHtml(ch.name)} โลโก้">`
+      : `<div class="badge">ไม่มีโลโก้</div>`;
+
+    const body = document.createElement('div');
+    body.className = 'card__body';
+    const title = document.createElement('h3');
+    title.className = 'card__title';
+    title.textContent = ch.name;
+
+    const meta = document.createElement('div');
+    meta.className = 'card__meta';
+    meta.innerHTML = `
+      <span class="badge">${ch.category}</span>
+      <span class="src">${prettyType(ch.type)}</span>
+    `;
+
+    const actions = document.createElement('div');
+    actions.className = 'card__actions';
+    const playBtn = document.createElement('button');
+    playBtn.className = 'btn primary';
+    playBtn.innerHTML = 'เล่นเลย ▶';
+    playBtn.addEventListener('click', () => openPlayer(ch));
+
+    actions.appendChild(playBtn);
+    body.appendChild(title);
+    body.appendChild(meta);
+    body.appendChild(actions);
+
+    card.appendChild(thumb);
+    card.appendChild(body);
+    gridEl.appendChild(card);
+  }
+}
+
+function prettyType(t){
+  switch((t||'').toLowerCase()){
+    case 'hls': return 'HLS (.m3u8)';
+    case 'dash': return 'DASH (.mpd)';
+    default: return 'สตรีม';
+  }
+}
+
+/* -------- Player -------- */
+function cleanupPlayers(){
+  try{
+    if (hlsInstance){ hlsInstance.destroy(); hlsInstance = null; }
+  }catch{}
+  try{
+    if (dashInstance){ dashInstance.reset(); dashInstance = null; }
+  }catch{}
+  try{
+    videoEl.pause();
+    videoEl.removeAttribute('src');
+    videoEl.load();
+  }catch{}
+}
+
+function openPlayer(ch){
+  cleanupPlayers();
+  modalTitle.textContent = ch.name || 'ช่องทีวี';
+  metaEl.textContent = `${ch.category} • ${prettyType(ch.type)}`;
+
+  const url = ch.src || ch.file || ch.url;
+  const type = (ch.type || '').toLowerCase() || ( /\.m3u8/.test(url) ? 'hls' : /\.mpd/.test(url) ? 'dash' : 'auto' );
+
+  if (type === 'hls' && window.Hls && Hls.isSupported()){
+    hlsInstance = new Hls({enableWorker:true});
+    hlsInstance.loadSource(url);
+    hlsInstance.attachMedia(videoEl);
+    hlsInstance.on(Hls.Events.MANIFEST_PARSED, () => videoEl.play().catch(()=>{}));
+  } else if (type === 'dash' && window.dashjs){
+    dashInstance = dashjs.MediaPlayer().create();
+    dashInstance.initialize(videoEl, url, true);
+  } else {
+    // fallback (Safari HLS native, หรือไฟล์ progressive)
+    videoEl.src = url;
+    videoEl.play().catch(()=>{});
+  }
+
+  modal.setAttribute('aria-hidden','false');
+}
+
+function closePlayer(){
+  cleanupPlayers();
+  modal.setAttribute('aria-hidden','true');
+}
+
+modal.addEventListener('click', e=>{
+  if (e.target.hasAttribute('data-close')) closePlayer();
+});
+document.addEventListener('keydown', e=>{
+  if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closePlayer();
+});
+
+/* -------- Search UX -------- */
+qEl.addEventListener('input', render);
+document.addEventListener('keydown', e=>{
+  if (e.key === '/' && document.activeElement !== qEl){
+    e.preventDefault(); qEl.focus();
+  }
+});
+
+/* -------- Utils -------- */
+function escapeHtml(s){
+  return byStr(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+/* -------- Boot -------- */
+loadChannels().catch(err=>{
+  console.error(err);
+  gridEl.innerHTML = `<p style="padding:14px;color:#fca5a5">โหลด channels.json ไม่สำเร็จ: ${escapeHtml(err.message||err)}</p>`;
+});
