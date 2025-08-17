@@ -24,7 +24,7 @@
   <header>
     <div class="h-wrap">
       <div id="clock" class="clock">--</div>
-      <div class="sub">อัปเดตอัตโนมัติ • เวลาเขตกรุงเทพฯ (UTC+7)</div>
+      
     </div>
   </header>
 
@@ -33,17 +33,18 @@
 
     <!-- Tabs (Filter) -->
     <nav id="tabs" class="tabs" role="tablist" aria-label="กรองช่อง">
-      <button class="tab" role="tab" aria-selected="true"  data-filter="ทั้งหมด">ทั้งหมด</button>
-      <button class="tab" role="tab" aria-selected="false" data-filter="ข่าว">ข่าว</button>
-      <button class="tab" role="tab" aria-selected="false" data-filter="บันเทิง">บันเทิง</button>
+      <!-- ลบ "ทั้งหมด" และเปลี่ยน "ข่าว" เป็น "IPTV" ให้ตรงกับ app.js -->
+      <button class="tab" role="tab" aria-selected="true"  data-filter="IPTV">IPTV</button>
+      <button class="tab" role="tab" aria-selected="false" data-filter="เด็ก">เด็ก</button>
       <button class="tab" role="tab" aria-selected="false" data-filter="กีฬา">กีฬา</button>
       <button class="tab" role="tab" aria-selected="false" data-filter="สารคดี">สารคดี</button>
       <button class="tab" role="tab" aria-selected="false" data-filter="เพลง">เพลง</button>
+      <button class="tab" role="tab" aria-selected="false" data-filter="บันเทิง">บันเทิง</button>
     </nav>
 
     <!-- Grid -->
     <section class="grid" id="channel-list" aria-live="polite"></section>
-    <div class="tip">แตะโลโก้ช่องเพื่อเล่น • บางอุปกรณ์อาจเริ่มแบบปิดเสียงก่อน</div>
+    
   </main>
 </body>
 </html>
