@@ -158,8 +158,8 @@
       "src": "https://a77aivottepl-a.akamaihd.net/pdx-nitro/live/clients/dash/enc/zuf794yutz/out/v1/ca3534bfe4f148298b36719204d108e0/cenc.mpd",
       "type": "dash",
       "category": "เด็ก",
-      
-    
+      "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36",
+      "proxy": true,
       "drm": { "clearkey": { "keyId": "be9caaa813c5305e761c66ac63645901", "key": "3d40f2990ec5362ca5be3a3c9bb8f8b4" } }
     },
     {
@@ -168,8 +168,8 @@
       "src": "https://atemecdnbalancer-voe.sysln.id/live/eds/HoreeHD/mpd/HoreeHD.mpd",
       "type": "dash",
       "category": "เด็ก",
-    
-     
+      "ua": "ExoPlayerDemo/2.15.1 (Linux; Android 13) ExoPlayerLib/2.15.1",
+      "proxy": true,
       "drm": { "clearkey": { "keyId": "0a3aaee779e940db8ff24f9f3eb5c98a", "key": "440e1c1ce9ba337844409c8bcad5a268" } }
     },
     {
@@ -178,8 +178,9 @@
       "src": "https://cdn08jtedge.indihometv.com/dassdvr/130/duniaanak/manifest.mpd",
       "type": "dash",
       "category": "เด็ก",
-    
-    
+      "ua": "IndiHomeTV/8.7.12 (Linux;Android 15.0.0;) ExoPlayerLib/2.19.1",
+      "referrer": "https://www.indihometv.com/",
+      "proxy": true,
       "drm": { "clearkey": { "keyId": "64756e6961616e616b30303030303030", "key": "40d96782fdd3ff05e7c0bf9aa7af8ce5" } }
     },
     {
