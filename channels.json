@@ -1,0 +1,336 @@
+{
+  "channels": [
+    {
+      "name": "ช่อง 5 HD (TV5HD)",
+      "logo": "https://ais-s.ais-vidnt.com/ais/play/origin/LIVE/channelicon/ch5new.logo.png",
+      "src": "https://cri-streamer3.cdn.3bbtv.com:8443/3bb/live/5/5.mpd",
+      "type": "dash",
+      "category": "IPTV",
+      "drm": {
+        "clearkey": {
+          "keyId": "87db4361f7894655a4656e9c8b9355a02",
+          "key": "b025a4b950df41158a87cfc8d6f2ac34"
+        }
+      }
+    },
+    {
+      "name": "NBT 2HD",
+      "logo": "https://ais-s.ais-vidnt.com/ais/play/origin/LIVE//channelicon/0001.png",
+      "src": "https://cri-streamer3.cdn.3bbtv.com:8443/3bb/live/2/2.mpd",
+      "type": "dash",
+      "category": "IPTV",
+      "drm": {
+        "clearkey": {
+          "keyId": "ca20a93cf8e3421dafbd5bdb1990081b",
+          "key": "86ae86a7391c481ea93eecdb740f0a14"
+        }
+      }
+    },
+    {
+      "name": "Thai PBS HD (ช่อง 3)",
+      "logo": "https://ais-s.ais-vidnt.com/ais/play/origin/LIVE//channelicon/0014.png",
+      "src": "https://cri-streamer3.cdn.3bbtv.com:8443/3bb/live/3/3.mpd",
+      "type": "dash",
+      "category": "IPTV",
+      "drm": {
+        "clearkey": {
+          "keyId": "4d4426a505f64382a9841155d721cee6",
+          "key": "0f4770219ccb4be5836a7517057e51c3"
+        }
+      }
+    },
+    {
+      "name": "ALTV ช่อง 4",
+      "logo": "https://ais-s.ais-vidnt.com/ais/play/origin/LIVE//channelicon/ALTV.PNG",
+      "src": "https://cri-streamer3.cdn.3bbtv.com:8443/3bb/live/4/4.mpd",
+      "type": "dash",
+      "category": "IPTV",
+      "drm": {
+        "clearkey": {
+          "keyId": "1e98456bcbea44b7ad05831387e364ef",
+          "key": "3d14fd4f9d3149a79b35a7124fccbd67"
+        }
+      }
+    },
+    {
+      "name": "T Sports 7",
+      "logo": "https://ais-s.ais-vidnt.com/ais/play/origin/LIVE/channelicon/T-SPorts_7_Final.png",
+      "src": "https://cri-streamer3.cdn.3bbtv.com:8443/3bb/live/7/7.mpd",
+      "type": "dash",
+      "category": "IPTV",
+      "drm": {
+        "clearkey": {
+          "keyId": "6187523f92b9475bb5b192f70cef1342",
+          "key": "5119311f482144d58dacabc5bc1fa4ba"
+        }
+      }
+    },
+    {
+      "name": "TPTV ช่องรัฐสภา (10)",
+      "logo": "https://ais-s.ais-vidnt.com/ais/play/origin/LIVE//channelicon/0048.png",
+      "src": "https://cri-streamer3.cdn.3bbtv.com:8443/3bb/live/10/10.mpd",
+      "type": "dash",
+      "category": "IPTV",
+      "drm": {
+        "clearkey": {
+          "keyId": "5da46688fd1e4ed5b085a12519b9dc4e",
+          "key": "fd07bcf33823447180f53f6540f74ccb"
+        }
+      }
+    },
+    {
+      "name": "TNN 16",
+      "logo": "https://ais-s.ais-vidnt.com/ais/play/origin/LIVE/channelicon/R2_0053.png",
+      "src": "https://cri-streamer3.cdn.3bbtv.com:8443/3bb/live/16/16.mpd",
+      "type": "dash",
+      "category": "IPTV",
+      "drm": {
+        "clearkey": {
+          "keyId": "9ebedc957e934d2b9023e4e60b97af73",
+          "key": "7bcb4363df74457bbafedec1a864e6b6"
+        }
+      }
+    },
+    {
+      "name": "JKN18",
+      "logo": "https://ais-s.ais-vidnt.com/ais/play/origin/LIVE//channelicon/JKN18.png",
+      "src": "https://cri-streamer3.cdn.3bbtv.com:8443/3bb/live/18/18.mpd",
+      "type": "dash",
+      "category": "IPTV",
+      "drm": {
+        "clearkey": {
+          "keyId": "333de6034a1d45fe91c829539caf1149",
+          "key": "2710efc048ca44bba4c2b57397989a26"
+        }
+      }
+    },
+    {
+      "name": "Nation TV 22",
+      "logo": "https://ais-s.ais-vidnt.com/ais/play/origin/LIVE/channelicon/0021.png",
+      "src": "https://cri-streamer3.cdn.3bbtv.com:8443/3bb/live/22/22.mpd",
+      "type": "dash",
+      "category": "IPTV",
+      "drm": {
+        "clearkey": {
+          "keyId": "87db4361f7894655a4656e9c8b935a02",
+          "key": "b025a4b950df41158a87cfc8d6f2ac34"
+        }
+      }
+    },
+    {
+      "name": "Workpoint TV 23",
+      "logo": "https://ais-s.ais-vidnt.com/ais/play/origin/LIVE/channelicon//0015_R.png",
+      "src": "https://cri-streamer3.cdn.3bbtv.com:8443/3bb/live/23/23.mpd",
+      "type": "dash",
+      "category": "IPTV",
+      "drm": {
+        "clearkey": {
+          "keyId": "87db4361f7894655a4656e9c8b935a02",
+          "key": "b025a4b950df41158a87cfc8d6f2ac34"
+        }
+      }
+    },
+    {
+      "name": "True4U 24",
+      "logo": "https://ais-s.ais-vidnt.com/ais/play/origin/LIVE/channelicon/0054.png",
+      "src": "https://cri-streamer3.cdn.3bbtv.com:8443/3bb/live/24/24.mpd",
+      "type": "dash",
+      "category": "IPTV",
+      "drm": {
+        "clearkey": {
+          "keyId": "87db4361f7894655a4656e9c8b935a02",
+          "key": "b025a4b950df41158a87cfc8d6f2ac34"
+        }
+      }
+    },
+    {
+      "name": "GMM25",
+      "logo": "https://ais-s.ais-vidnt.com/ais/play/origin/LIVE/channelicon/0019.png",
+      "src": "https://cri-streamer3.cdn.3bbtv.com:8443/3bb/live/25/25.mpd",
+      "type": "dash",
+      "category": "IPTV",
+      "drm": {
+        "clearkey": {
+          "keyId": "87db4361f7894655a4656e9c8b935a02",
+          "key": "b025a4b950df41158a87cfc8d6f2ac34"
+        }
+      }
+    },
+    {
+      "name": "ช่อง 8 (27)",
+      "logo": "https://ais-s.ais-vidnt.com/ais/play/origin/LIVE/channelicon//0006.png",
+      "src": "https://cri-streamer3.cdn.3bbtv.com:8443/3bb/live/27/27.mpd",
+      "type": "dash",
+      "category": "IPTV",
+      "drm": null
+    },
+    [
+      {
+        "name": "ANIMAX",
+        "logo": "https://raw.githubusercontent.com/KOGOCUNG/plugin/refs/heads/main/Animax.png",
+        "src": "https://tglmp01.akamaized.net/out/v1/de55fad9216e4fe7ad8d2eed456ba1ec/manifest.mpd",
+        "type": "dash",
+        "category": "เด็ก",
+        "drm": {
+          "clearkey": {
+            "keyId": "edf1a715de9748638dd2fad75a419af2",
+            "key": "2f5a3199b26e9b693ae881af7ff864cf"
+          }
+        }
+      },
+      {
+        "name": "Cartoon Network",
+        "logo": "https://raw.githubusercontent.com/KOGOCUNG/plugin/refs/heads/main/cartoonnetwork.png",
+        "src": "https://atemeshield1-voe.sysln.id/live/eds/CartoonNetWHD/mpd/CartoonNetWHD.mpd",
+        "type": "dash",
+        "category": "เด็ก",
+        "ua": "ExoPlayerDemo/2.15.1 (Linux; Android 13) ExoPlayerLib/2.15.1",
+        "drm": {
+          "clearkey": {
+            "keyId": "12fee297311f4bab91367d0e9c3a0a2f",
+            "key": "656071dbdffbda440a6fde4fda56de21"
+          }
+        }
+      },
+      {
+        "name": "Cartoonito (ID)",
+        "logo": "https://upload.wikimedia.org/wikipedia/it/f/f0/Cartoonito_Logo_2017.png",
+        "src": "https://atemecdnbalancer-voe.sysln.id/live/eds/CartoonitoHD/mpd/CartoonitoHD.mpd",
+        "type": "dash",
+        "category": "เด็ก",
+        "ua": "ExoPlayerDemo/2.15.1 (Linux; Android 13) ExoPlayerLib/2.15.1",
+        "drm": {
+          "clearkey": {
+            "keyId": "955574ee2b674f0fbbad818fb384c233",
+            "key": "51d2893619bdd062fb4c0cdaafefbf27"
+          }
+        }
+      },
+      {
+        "name": "DreamWorks HD",
+        "logo": "https://iptv-pro.github.io/logo/DREAMWORKS.png",
+        "src": "https://atemecdnbalancer-voe.sysln.id/live/eds/DreamWorksHD/mpd/DreamWorksHD.mpd",
+        "type": "dash",
+        "category": "เด็ก",
+        "ua": "ExoPlayerDemo/2.15.1 (Linux; Android 13) ExoPlayerLib/2.15.1",
+        "drm": {
+          "clearkey": {
+            "keyId": "f08c30b7ee114399b72e77b0c099244b",
+            "key": "a33d496875d04510a9b3116ba51ae65d"
+          }
+        }
+      },
+      {
+        "name": "Disney Junior",
+        "logo": "https://raw.githubusercontent.com/KOGOCUNG/plugin/refs/heads/main/DISNEY_JUNIOR.png",
+        "src": "https://a181aivottepl-a.akamaihd.net/pdx-nitro/live/clients/dash/enc/0qvo3uakfd/out/v1/d62a555c1e5945f3bae88ae4018321d4/cenc.mpd",
+        "type": "dash",
+        "category": "เด็ก",
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36",
+        "drm": {
+          "clearkey": {
+            "keyId": "221e176f3dfabb84ff506d65dd93b09f",
+            "key": "6a97b8d4beed4d4b1697c1488706c6ca"
+          }
+        }
+      },
+      {
+        "name": "Disney Channel",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/2019_Disney_Channel_logo.svg/320px-2019_Disney_Channel_logo.svg.png",
+        "src": "https://a77aivottepl-a.akamaihd.net/pdx-nitro/live/clients/dash/enc/zuf794yutz/out/v1/ca3534bfe4f148298b36719204d108e0/cenc.mpd",
+        "type": "dash",
+        "category": "เด็ก",
+        "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36",
+        "drm": {
+          "clearkey": {
+            "keyId": "be9caaa813c5305e761c66ac63645901",
+            "key": "3d40f2990ec5362ca5be3a3c9bb8f8b4"
+          }
+        }
+      },
+      {
+        "name": "Horee!",
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/0/0e/HOREE_logo.png",
+        "src": "https://atemecdnbalancer-voe.sysln.id/live/eds/HoreeHD/mpd/HoreeHD.mpd",
+        "type": "dash",
+        "category": "เด็ก",
+        "ua": "ExoPlayerDemo/2.15.1 (Linux; Android 13) ExoPlayerLib/2.15.1",
+        "drm": {
+          "clearkey": {
+            "keyId": "0a3aaee779e940db8ff24f9f3eb5c98a",
+            "key": "440e1c1ce9ba337844409c8bcad5a268"
+          }
+        }
+      },
+      {
+        "name": "Dunia Anak",
+        "logo": "https://static.wikia.nocookie.net/logopedia/images/f/f4/Dunia_Anak_Transvision.png",
+        "src": "https://cdn08jtedge.indihometv.com/dassdvr/130/duniaanak/manifest.mpd",
+        "type": "dash",
+        "category": "เด็ก",
+        "ua": "IndiHomeTV/8.7.12 (Linux;Android 15.0.0;) ExoPlayerLib/2.19.1",
+        "ref": "https://www.indihometv.com/",
+        "drm": {
+          "clearkey": {
+            "keyId": "64756e6961616e616b30303030303030",
+            "key": "40d96782fdd3ff05e7c0bf9aa7af8ce5"
+          }
+        }
+      },
+      {
+        "name": "HBO Family",
+        "logo": "https://ais-s.ais-vidnt.com/ais/play/origin/LIVE/channelicon/0150.png",
+        "src": "https://qp-pldt-live-grp-03-prod.akamaized.net/out/u/cg_hbofam.mpd",
+        "type": "dash",
+        "category": "เด็ก",
+        "drm": {
+          "clearkey": {
+            "keyId": "872910c843294319800d85f9a0940607",
+            "key": "f79fd895b79c590708cf5e8b5c6263be"
+          }
+        }
+      },
+      {
+        "name": "Mr. Bean Cartoon",
+        "logo": "https://i.postimg.cc/yWqNWZf5/Mr-Bean.png",
+        "src": "https://amg00627-amg00627c30-rakuten-es-3990.playouts.now.amagi.tv/playlist/amg00627-banijayfast-mrbeanescc-rakutenes/playlist.m3u8",
+        "type": "hls",
+        "category": "เด็ก"
+      },
+      {
+        "name": "Zoo Moo",
+        "logo": "https://images.squarespace-cdn.com/content/v1/5c4104e7af209609ea6f281b/b440d39b-935e-4b40-9b6d-edc3d94f11b9/Primary+Logo.png",
+        "src": "https://amg01553-blueantmediaasi-zoomoonz-samsungnz-rdufn.amagi.tv/playlist/amg01553-blueantmediaasi-zoomoonz-samsungnz/playlist.m3u8",
+        "type": "hls",
+        "category": "เด็ก"
+      },
+      {
+        "name": "PBS Kids",
+        "logo": "https://i.postimg.cc/HkkPhhWS/pbskids.png",
+        "src": "https://2-fss-2.streamhoster.com/pl_140/amlst:200914-1298290/playlist.m3u8",
+        "type": "hls",
+        "category": "เด็ก"
+      },
+      {
+        "name": "Oktolidays",
+        "logo": "https://i.imgur.com/Dt0kA7e.png",
+        "src": "https://tglmp03.akamaized.net/out/v1/be732843b7d24bada23e13810282e55f/manifest.mpd",
+        "type": "dash",
+        "category": "เด็ก",
+        "drm": {
+          "clearkey": {
+            "keyId": "612eb711dfb444f7a194c5e20d7f7048",
+            "key": "b6226449b9ed5066542e6d6ad5ecb346"
+          }
+        }
+      },
+      {
+        "name": "Biznet Kids HD",
+        "logo": "http://livestream.biznetvideo.net/biznet_kids/smil:kids.smil/manifest.mpd",
+        "src": "http://livestream.biznetvideo.net/biznet_kids/smil:kids.smil/manifest.mpd",
+        "type": "dash",
+        "category": "เด็ก"
+      }
+    ]
+  ]
+}

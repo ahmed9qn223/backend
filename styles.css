@@ -1,0 +1,119 @@
+/* ===== Base ===== */
+:root{
+  --bg:#0b0d10;
+  --bg-soft:#11151a;
+  --card:#151a20;
+  --card-hover:#1a2028;
+  --text:#e9f1ff;
+  --muted:#9fb0c8;
+  --brand:#00d1ff;
+  --badge:#223041;
+  --tile-w: 168px;
+  --tile-h: 112px;
+  --radius: 14px;
+  --shadow: 0 6px 20px rgba(0,0,0,.25);
+}
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Thai", "Noto Sans", Arial, sans-serif;
+}
+
+/* ===== Header ===== */
+header{ position:sticky; top:0; z-index: 50; background: linear-gradient(180deg, #0b0d10, #0b0d10e6 60%, #0b0d1000); }
+.h-wrap{
+  display:flex; align-items:center; gap:14px;
+  padding: 12px 16px 6px 16px;
+}
+.clock{
+  font-weight:700; letter-spacing:.2px;
+  padding:8px 12px; border-radius:999px; background:var(--bg-soft);
+}
+.now-playing{
+  opacity:.9; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.now-playing.swap{ animation: np .4s ease; }
+@keyframes np{ from{opacity:.4; transform:translateY(4px)} to{opacity:1; transform:none} }
+
+/* ===== Player ===== */
+#player{
+  width:100%;
+  aspect-ratio: 16 / 9;      /* รักษาสัดส่วนให้ผู้เล่น */
+  background:#000;
+  box-shadow: var(--shadow);
+  border-radius: 16px;
+  overflow:hidden;
+  margin: 6px 12px 12px;
+  min-height: 180px;
+}
+
+/* ===== Tabs ===== */
+.tabs{
+  display:flex; gap:8px; overflow:auto; scrollbar-width:thin;
+  padding: 4px 12px 10px; margin: 0 0 2px;
+}
+.tab{
+  background:var(--bg-soft); color:var(--text);
+  border:0; padding:8px 12px; border-radius:999px; cursor:pointer;
+  white-space:nowrap; font-weight:600; opacity:.85;
+}
+.tab:hover{ background:var(--card); }
+.tab.active{ background:var(--brand); color:#001018; opacity:1; }
+
+/* ===== Grid ===== */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--tile-w), 1fr));
+  gap:12px;
+  padding: 8px 12px 32px;
+}
+.channel{
+  position:relative;
+  width:100%; height: var(--tile-h);
+  background:var(--card);
+  border-radius: var(--radius);
+  display:grid; grid-template-columns: 112px 1fr; gap:10px;
+  align-items:center;
+  padding:10px; cursor:pointer;
+  transition: transform .12s ease, background .12s ease, box-shadow .12s ease;
+  transform: translateZ(0);
+
+  /* ทำให้ไถ/เลื่อนลื่นขึ้นมาก */
+  content-visibility: auto;
+  contain-intrinsic-size: 120px 104px;
+}
+.channel:hover{ background:var(--card-hover); transform: translateY(-1px); box-shadow: var(--shadow); }
+.channel.active{ outline:2px solid var(--brand); }
+.thumb{
+  width:100%; height:100%;
+  display:grid; place-items:center;
+}
+.logo{
+  max-width:100%; max-height:100%;
+  object-fit:contain; filter: drop-shadow(0 1px 0 rgba(0,0,0,.4));
+}
+.meta{ min-width:0; }
+.name{ font-weight:700; }
+.ellipsis{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.tags{ display:flex; gap:6px; margin-top:6px; align-items:center; flex-wrap:wrap; }
+.badge{
+  display:inline-block; font-size:12px; font-weight:700;
+  padding:4px 8px; border-radius:999px; background:var(--badge); color:#cfe7ff;
+}
+
+.empty{
+  text-align:center; padding:28px; color:#cfe7ff; opacity:.8;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 720px){
+  :root{ --tile-w: 150px; --tile-h: 100px; }
+  .grid{ gap:10px; }
+  .channel{ grid-template-columns: 100px 1fr; }
+}
+
+/* ===== Scrollbar (webkit) ===== */
+.tabs::-webkit-scrollbar{ height:10px }
+.tabs::-webkit-scrollbar-thumb{ background:#223041; border-radius:999px }
+.tabs::-webkit-scrollbar-track{ background:transparent }
