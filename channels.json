@@ -104,8 +104,6 @@
       "category": "IPTV",
       "drm": null
     },
-
-    /* ===== หมวด เด็ก ===== */
     {
       "name": "ANIMAX",
       "logo": "https://raw.githubusercontent.com/KOGOCUNG/plugin/refs/heads/main/Animax.png",
