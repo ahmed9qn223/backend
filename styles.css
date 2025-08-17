@@ -5,7 +5,7 @@
   --text:#e7e9ee;
   --muted:#b4b8c2;
   --line:#222634;
-  --accent:#3b82f6; /* fallback */
+  --accent:#3b82f6;
   --radius:16px;
   --shadow:0 12px 30px rgba(0,0,0,.25);
 }
@@ -30,50 +30,6 @@ body{
 .brand{display:flex; align-items:center; gap:12px}
 .brand .logo{font-size:22px}
 .brand h1{margin:0; font-size:18px; letter-spacing:.4px}
-
-.tools{display:flex; align-items:center; gap:12px}
-.search{position:relative; display:flex; align-items:center}
-.search input{
-  width:min(64vw,520px); max-width:100%;
-  padding:10px 36px 10px 12px; border-radius:12px;
-  border:1px solid var(--line); background:var(--bg-soft); color:var(--text);
-}
-.search .kbd{
-  position:absolute; right:8px; top:50%; translate:0 -50%;
-  font-size:12px; color:var(--muted);
-  border:1px solid var(--line); padding:1px 6px; border-radius:6px;
-}
-
-/* Tabs */
-.tabs{
-  display:flex; gap:8px; flex-wrap:wrap;
-  padding:12px clamp(12px,4vw,24px) 8px;
-  border-bottom:1px dashed var(--line);
-}
-.tab{
-  --accent: var(--accent);
-  display:inline-flex; align-items:center; gap:8px;
-  padding:10px 14px; border-radius:999px;
-  border:1px solid var(--line);
-  color:var(--text); background:rgba(255,255,255,.02);
-  cursor:pointer; user-select:none; transition:.2s ease;
-}
-.tab svg{width:18px; height:18px; display:block}
-.tab:hover{border-color:color-mix(in oklab, var(--accent) 60%, var(--line)); box-shadow:0 6px 16px rgba(0,0,0,.2)}
-.tab[aria-selected="true"]{
-  background: color-mix(in oklab, var(--accent) 22%, transparent);
-  border-color: color-mix(in oklab, var(--accent) 70%, var(--line));
-}
-
-/* สี accent ต่อหมวด */
-.tab[data-filter="IPTV"]{--accent:#3b82f6}  /* น้ำเงิน */
-.tab[data-filter="เด็ก"]{--accent:#ec4899}  /* ชมพูสด */
-.tab[data-filter="บันเทิง"]{--accent:#f59e0b}
-.tab[data-filter="กีฬา"]{--accent:#22c55e}
-.tab[data-filter="สารคดี"]{--accent:#06b6d4}
-.tab[data-filter="เพลง"]{--accent:#a855f7}
-.tab[data-filter="หนัง"]{--accent:#f97316}
-.tab[data-filter="ทั้งหมด"]{--accent:#94a3b8}
 
 /* Grid (Cards) */
 main{padding:18px clamp(12px,4vw,24px) 32px}
@@ -132,6 +88,7 @@ main{padding:18px clamp(12px,4vw,24px) 32px}
 .modal__body{padding:0}
 #player{width:min(96vw,1080px); height:min(54vw,56vh); background:black; display:block}
 
+/* Responsive: mobile first, scale up automatically */
 @media (max-width:720px){
   .grid{grid-template-columns: repeat(auto-fill, minmax(160px,1fr))}
 }
