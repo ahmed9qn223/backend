@@ -7,13 +7,13 @@
 
 const CHANNELS_URL = 'channels.json';
 const TIMEZONE = 'Asia/Bangkok';
-const TABS = ['ทั้งหมด','ข่าว','บันเทิง','กีฬา','สารคดี','เพลง'];
+const TABS = ['IPTV','บันเทิง','กีฬา','สารคดี','เพลง','เด็ก']; // ✅ เพิ่ม "เด็ก"
 
 // ใส่คีย์ถ้ายังไม่ได้ตั้งใน HTML
 try { jwplayer.key = jwplayer.key || 'XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo'; } catch {}
 
 let channels = [];
-let currentFilter = 'ทั้งหมด';
+let currentFilter = TABS[0] || '';
 let currentIndex = -1;
 let scrollOnNextPlay = false;
 
@@ -104,7 +104,7 @@ function wireTabs(){
   });
 }
 function setActiveTab(name){
-  if(!TABS.includes(name)) name='ทั้งหมด';
+  if(!TABS.includes(name)) name=(TABS[0]||'');
   currentFilter = name;
   document.querySelectorAll('#tabs .tab').forEach(b=>{
     const sel = b.dataset.filter===name;
@@ -122,28 +122,35 @@ function getIconSVG(n){
   const s='currentColor', w=2;
   switch(n){
     case 'ทั้งหมด': return `<svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1" fill="${s}"/><rect x="14" y="3" width="7" height="7" rx="1" fill="${s}"/><rect x="3" y="14" width="7" height="7" rx="1" fill="${s}"/><rect x="14" y="14" width="7" height="7" rx="1" fill="${s}"/></svg>`;
-    case 'ข่าว': return `<svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="14" height="14" rx="2" stroke="${s}" stroke-width="${w}"/><path d="M7 9h8M7 13h8M7 17h8" stroke="${s}" stroke-width="${w}" stroke-linecap="round"/></svg>`;
+    case 'IPTV': return `<svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="12" rx="2" stroke="${s}" stroke-width="${w}"/><path d="M8 20h8" stroke="${s}" stroke-width="${w}" stroke-linecap="round"/><polygon points="11,10 16,12 11,14" fill="${s}"/></svg>`;
     case 'บันเทิง': return `<svg viewBox="0 0 24 24" fill="none"><path d="M12 4l2.7 5.5 6 .9-4.4 4.3 1 6-5.3-2.8-5.3 2.8 1-6L3.3 10.4l6-.9L12 4z" stroke="${s}" stroke-width="${w}" stroke-linejoin="round"/></svg>`;
     case 'กีฬา': return `<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="${s}" stroke-width="${w}"/><path d="M3 12h18" stroke="${s}" stroke-width="${w}" stroke-linecap="round"/><path d="M12 3a9 9 0 0 1 0 18" stroke="${s}" stroke-width="${w}" stroke-linecap="round"/><path d="M12 3a9 9 0 0 0 0 18" stroke="${s}" stroke-width="${w}" stroke-linecap="round"/></svg>`;
     case 'สารคดี': return `<svg viewBox="0 0 24 24" fill="none"><path d="M4 6h7a3 3 0 0 1 3 3v11H7a3 3 0 0 0-3 3V6z" stroke="${s}" stroke-width="${w}" stroke-linejoin="round"/><path d="M13 6h7a3 3 0 0 1 3 3v11h-7a3 3 0 0 0-3 3V6z" stroke="${s}" stroke-width="${w}" stroke-linejoin="round"/></svg>`;
     case 'เพลง': return `<svg viewBox="0 0 24 24" fill="none"><path d="M14 4v9.5a2.5 2.5 0 1 1-2-2.45V8l-4 1v7a2 2 0 1 1-2-2V8.5l8-2.5Z" fill="${s}"/></svg>`;
+    case 'เด็ก': return `<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="${s}" stroke-width="${w}"/><circle cx="9" cy="10" r="1.5" fill="${s}"/><circle cx="15" cy="10" r="1.5" fill="${s}"/><path d="M8.5 14c1 .8 2.3 1.2 3.5 1.2S14.5 14.8 15.5 14" stroke="${s}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/></svg>`; // หน้ายิ้มเด็ก
     default: return `<svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="${s}" stroke-width="${w}"/></svg>`;
   }
 }
 function debounce(fn,wait=150){let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),wait)}}
 
 /* -------------------- DATA / FILTER -------------------- */
-function filterChannels(list, tab){
-  if(tab==='ทั้งหมด') return list;
-  return list.filter(ch => (ch.category || guessCategory(ch)) === tab);
+function filterChannels(list, tab){ if(!tab) return list;
+  return list.filter(ch => normalizeCategory(ch.category || guessCategory(ch)) === tab);
 }
 function guessCategory(ch){
   const s=(ch.name||'').toLowerCase();
-  if (/(ข่าว|tnn|nation|thairath|nbt|pbs|jkn|spring|voice)/.test(s)) return 'ข่าว';
+  if (/(ข่าว|tnn|nation|thairath|nbt|pbs|jkn|spring|voice)/.test(s)) return 'IPTV';
   if (/(sport|กีฬา|t\s?sports|3bb\s?sports|bein|true\s?sport|pptv\s?hd\s?36)/.test(s)) return 'กีฬา';
+  if (/(เด็ก|การ์ตูน|cartoon|kid?s|nick(?:elodeon)?|boomerang|disney\s?junior|disney\s?xd|baby\s?tv|cartoon\s?network|miao\s?mi|duck\s?tv)/.test(s)) return 'เด็ก'; // ✅ เด็ก
   if (/(สารคดี|discovery|animal|nat.?geo|history|documentary|bbc earth|cgnc)/.test(s)) return 'สารคดี';
   if (/(เพลง|music|mtv|channel\s?v|music\s?hits)/.test(s)) return 'เพลง';
   return 'บันเทิง';
+}
+
+function normalizeCategory(cat){
+  const c = String(cat||'').trim();
+  if (c === 'ข่าว') return 'IPTV';
+  return c;
 }
 
 /* -------------------- RENDER GRID -------------------- */
@@ -274,7 +281,7 @@ function highlight(globalIndex){
 }
 function escapeHtml(s){
   return String(s).replace(/[&<>"'`=\/]/g, c => ({
-    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','/':'&#x2F;','`':'&#x60;','=':'&#x3D;'
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;','/':'&#x2F;','`':'&#x60;','=':'&#x3D;'
   }[c]));
 }
 
