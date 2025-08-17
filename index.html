@@ -8,10 +8,10 @@
   <!-- Favicon -->
   <link rel="icon"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%2300D1FF'/%3E%3Ctext x='50' y='64' text-anchor='middle' font-family='Arial, sans-serif' font-size='60' fill='white'%3ETV%3C/text%3E%3C/svg%3E">
+  <meta name="theme-color" content="#0c0c0d" />
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
-  <meta name="theme-color" content="#0c0c0d" />
 
   <!-- Players (CDN) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.8/hls.min.js" defer></script>
@@ -23,18 +23,9 @@
       <span class="logo">📺</span>
       <h1>FLOWTV</h1>
     </div>
-
-    <div class="tools">
-      <label class="search">
-        <input id="q" type="search" placeholder="ค้นหาช่อง… (ชื่อ/คำสำคัญ)" aria-label="ค้นหาช่อง" />
-        <span class="kbd">/</span>
-      </label>
-    </div>
   </header>
 
-  <!-- แท็บจะถูก JS สร้างให้ทั้งหมด -->
-  <nav id="tabs" class="tabs" role="tablist" aria-label="กรองช่อง"></nav>
-
+  <!-- ไม่มีส่วนกรอง/แท็บตามที่ขอ -->
   <main>
     <section id="grid" class="grid" aria-live="polite"></section>
   </main>
